@@ -1,0 +1,40 @@
+{
+  "schema": "cookbranch.chooser-lifecycle-investigation/v1",
+  "date": "2026-10-06",
+  "observedFailedCommit": "105993db64df3762a6e2cab4489e692361ec41d0",
+  "observedFailedRunId": 37402519089,
+  "failure": "Filechooser event timeout in keyboard receipt picker check after the keyboard source picker and keyboard review checks passed",
+  "observations": [
+    "Failed screenshot shows receipt details open and Open choices.json focused",
+    "No JavaScript runtime error was recorded",
+    "Earlier actual downloaded recipes passed all three independent consumer checks",
+    "Earlier direct matching-record import passed",
+    "The identical runtime passed the complete browser suite in source run 37401462594",
+    "A later screenshot cannot establish focus/layout/user-activation state at the exact Enter event"
+  ],
+  "reviewedTestDependency": {
+    "package": "playwright-core",
+    "version": "1.56.0",
+    "sourceFiles": [
+      "lib/client/channelOwner.js",
+      "lib/server/chromium/crPage.js"
+    ],
+    "finding": "Adding/removing the last filechooser listener starts asynchronous event subscription / Chromium interception updates"
+  },
+  "hypothesis": "Rapid short-lived chooser listener removal and readdition may race interception lifecycle. This is plausible, not a proven root cause or a demonstrated product defect.",
+  "testOnlyChange": [
+    "Persistent non-handling filechooser observer installed before navigation so interception remains subscribed",
+    "Expand the receipt details with the keyboard, assert open/visible/enabled state, then Tab to the button",
+    "Retain real keyboard Enter and required chooser event for both controls",
+    "Assert exact focused receipt button, focus-visible state and chooser input identity",
+    "Require matching imported recipe output and exactly four observed chooser events across two complete rounds",
+    "Collect bounded safe picker keyboard/click/focus/user-activation diagnostics on failure",
+    "Run the real source-picker \u2192 ingredient choice/review \u2192 receipt-picker sequence for two bounded rounds"
+  ],
+  "unchanged": [
+    "No runtime, compiler, UI, CSS, build or dependency changes; packaging allowlist adds this investigation record",
+    "No added sleep or automatic retry, no fallback setInputFiles bypass, and no weakened assertion",
+    "Chromium sandbox remains enabled"
+  ],
+  "nextGate": "Run the complete hosted workflow on the exact new test commit; an eventual pass alone does not prove the original race hypothesis"
+}

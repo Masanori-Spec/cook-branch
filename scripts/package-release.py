@@ -13,7 +13,7 @@ FILES=['.gitignore','.github/workflows/verify.yml','README.md','package.json','p
  'fixtures/expected/default-barley.cook','fixtures/expected/default-rice.cook','fixtures/expected/herb-barley.cook','fixtures/expected/herb-rice.cook',
  'docs/PROFILE.md','docs/VERIFICATION.md','docs/oracles.md','dist/cook-branch.html',
  'evidence/local-verification.json','evidence/matrix.evidence.json','evidence/profile.evidence.json','evidence/negative-control.evidence.json','evidence/provenance.evidence.json']
-OPTIONAL=['evidence/independent-review.json','evidence/browser-report.json','evidence/visual-review.json','evidence/hosted-verification.json']
+OPTIONAL=['evidence/independent-review.json','evidence/browser-report.json','evidence/visual-review.json','evidence/hosted-verification.json','evidence/chooser-lifecycle-investigation.json']
 files=FILES+[p for p in OPTIONAL if (ROOT/p).is_file()]
 for p in files:
  if not (ROOT/p).is_file():raise RuntimeError('Missing allowlisted input: '+p)
