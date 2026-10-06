@@ -1,1 +1,72 @@
-
+name: Verify CookBranch
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+defaults:
+  run:
+    shell: bash
+jobs:
+  compiler-and-oracles:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: mkdir -p artifacts
+      - run: npm test | tee artifacts/unit-tests.log
+      - run: python3 scripts/fetch-oracles.py
+      - run: node scripts/oracle-matrix.mjs
+      - run: node scripts/oracle-profile.mjs
+      - run: python3 -m unittest discover -s tests -p 'oracle_*.py' -v 2>&1 | tee artifacts/oracle-mutations.log
+      - run: npm run build
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: compiler-native-oracles-and-app
+          path: |
+            artifacts/
+            dist/
+  browser-download-oracles:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --ignore-scripts
+      - run: python3 scripts/fetch-oracles.py
+      - run: npm run build
+      - name: Install test-only Japanese fonts and print renderer
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y fonts-noto-cjk poppler-utils
+          fc-cache -f
+          fc-match -f '%{family}\n' 'sans:lang=ja' | tee /tmp/cookbranch-japanese-font.txt
+          grep -qi 'Noto.*CJK' /tmp/cookbranch-japanese-font.txt
+      - name: Sandboxed browser and actual exported files
+        env:
+          CHROMIUM_PATH: /usr/bin/google-chrome
+        run: |
+          test -x "$CHROMIUM_PATH"
+          node scripts/serve.mjs > /tmp/cookbranch-server.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID"' EXIT
+          for i in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ >/dev/null && break; sleep 0.25; done
+          node tests/browser/run.mjs
+      - name: Render review print for pixel inspection
+        run: pdftoppm -png -r 110 artifacts/browser/review-print.pdf artifacts/browser/print-page
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-download-native-and-visual-evidence
+          path: artifacts/browser/
