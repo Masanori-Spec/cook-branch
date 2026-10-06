@@ -1,0 +1,101 @@
+{
+  "schema": "cookbranch.visual-review/v1",
+  "status": "pass-with-nonblocking-copy-note",
+  "date": "2026-10-06",
+  "sourceCommit": "11b84498c46bd01905cd92ac7bdb709ec29d63e7",
+  "runURL": "https://github.com/Masanori-Spec/cook-branch/actions/runs/37401462594",
+  "method": "Independent direct pixel inspection of the nine captured screenshots and rendered print page; no browser operation during this review",
+  "imagesInspected": 10,
+  "screenshots": 9,
+  "printPages": 1,
+  "images": [
+    {
+      "file": "desktop-en-blocked.png",
+      "sha256": "984ccd64d090c041f8cbc7881f3e4838354aff75c5302fea602579ab12e53466",
+      "width": 1440,
+      "height": 1504,
+      "result": "reviewed; no visual blocker"
+    },
+    {
+      "file": "desktop-en-diff.png",
+      "sha256": "6ab49346f94da3e89799e77e0d91376ceee6fa446bb6c254a71da519264c794c",
+      "width": 1440,
+      "height": 1828,
+      "result": "reviewed; no visual blocker"
+    },
+    {
+      "file": "desktop-en-reviewed.png",
+      "sha256": "e8f6a0cc537314ad318f7a41048031e9f5ad1a8d4c36964b139d6ce45aba28a7",
+      "width": 1440,
+      "height": 1661,
+      "result": "reviewed; no visual blocker"
+    },
+    {
+      "file": "desktop-ja-reviewed.png",
+      "sha256": "179dcbac519d01ffa272d48dabb5fd6c809d13a7f46849cabef8122729588a0a",
+      "width": 1440,
+      "height": 1671,
+      "result": "reviewed; no visual blocker"
+    },
+    {
+      "file": "desktop-ja-unselected.png",
+      "sha256": "8631daa041387727adc508e8882a5a2ba5312aec9254cc6013f2f9af2ceda17f",
+      "width": 1440,
+      "height": 1490,
+      "result": "reviewed; no visual blocker"
+    },
+    {
+      "file": "mobile-320-en.png",
+      "sha256": "1b8a174216b512d874bd8af65f741783c3b8ef400c45b4a12726aca0e20b69d0",
+      "width": 320,
+      "height": 2699,
+      "result": "reviewed; no visual blocker"
+    },
+    {
+      "file": "mobile-320-ja.png",
+      "sha256": "d24dea7f4a95e87fa1cc5420e9f8c579cd7ee18a22a08c0330ef4db3d37a8e8b",
+      "width": 320,
+      "height": 2653,
+      "result": "reviewed; no visual blocker"
+    },
+    {
+      "file": "mobile-390-en.png",
+      "sha256": "5c7110085bf9d608c376027f1f346244f1bccf468c5cf622cbdae65b93c196da",
+      "width": 390,
+      "height": 2604,
+      "result": "reviewed; no visual blocker"
+    },
+    {
+      "file": "mobile-390-ja.png",
+      "sha256": "99169473eef520072c1c4ad75d8321204bf9e20fec1cb58d4732acbea9daf1bb",
+      "width": 390,
+      "height": 2616,
+      "result": "reviewed; no visual blocker"
+    },
+    {
+      "file": "print-page-1.png",
+      "sha256": "94f7390385d00fe7e11a738fab881378c6b371ef108d81f05429a36c81bc16eb",
+      "width": 909,
+      "height": 1287,
+      "result": "reviewed; no visual blocker"
+    }
+  ],
+  "checks": [
+    "Japanese glyphs rendered without missing-glyph boxes",
+    "Desktop initial, reviewed, ingredient-diff and blocked states inspected",
+    "English and Japanese layouts at 320 and 390 pixels inspected",
+    "No page-level horizontal clipping or overlapping controls observed",
+    "Selection, disabled-output, error and export controls remain legible",
+    "One-page print includes all three retained instructions, four retained ingredients, two removed ingredients and the removed branch"
+  ],
+  "blockers": [],
+  "nonblockingNotes": [
+    "English count labels use plural forms for a count of one (1 choices, 1 removed branches). Runtime remains unchanged."
+  ],
+  "limitations": [
+    "Visual inspection is not a formal WCAG/contrast audit",
+    "Recipe source textarea intentionally scrolls horizontally for long lines",
+    "Review covers the captured original fixture and states, not every possible user recipe"
+  ],
+  "printPdfSha256": "658fea38779263a9a82da19df0ae1b4e68c2259bbffa86f692947d5d11bc76d5"
+}

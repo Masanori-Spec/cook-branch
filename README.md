@@ -52,6 +52,8 @@ No quantity arithmetic, substitutions, serving changes, dietary/allergen assessm
 
 ## Verification
 
+Verified source build: [`11b8449`](https://github.com/Masanori-Spec/cook-branch/commit/11b84498c46bd01905cd92ac7bdb709ec29d63e7), [successful hosted run](https://github.com/Masanori-Spec/cook-branch/actions/runs/37401462594), checked 2026-10-06. It passed 129 Node tests, 36 consumer-profile cases, six oracle test methods and 39 sandboxed browser checks. All four actual UI exports passed the three-oracle gate. Nine screenshots and the one-page print were independently inspected with no visual blocker. See the detailed verification record below for scope and the minor English plural-label note.
+
 Orchard Bowl has four independently authored expected combinations:
 
 - Default/barley: barley 180 g, peas 60 g, lemon juice 15 ml; Base section, two steps, bowl, no timer

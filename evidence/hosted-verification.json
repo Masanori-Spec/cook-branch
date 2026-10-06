@@ -1,0 +1,80 @@
+{
+  "schema": "cookbranch.hosted-verification/v1",
+  "status": "pass",
+  "date": "2026-10-06",
+  "repositoryURL": "https://github.com/Masanori-Spec/cook-branch",
+  "sourceCommit": "11b84498c46bd01905cd92ac7bdb709ec29d63e7",
+  "workflowRunId": 37401462594,
+  "workflowRunURL": "https://github.com/Masanori-Spec/cook-branch/actions/runs/37401462594",
+  "jobs": [
+    "compiler-and-oracles",
+    "browser-download-oracles"
+  ],
+  "runner": "ubuntu-22.04",
+  "browser": "154.0.8037.57",
+  "chromiumSandbox": true,
+  "nodeTests": 129,
+  "oracleTestMethods": 6,
+  "semanticMutationRejections": 45,
+  "profileCases": 36,
+  "browserChecks": 39,
+  "actualBrowserDownloads": [
+    {
+      "case": "default-barley",
+      "status": "pass",
+      "downloadSha256": "adc18f3d9cbabf93456953b4770d7642176823f1c5c5b637d588a40b0c542912",
+      "oracles": {
+        "handwrittenDecimal": "pass",
+        "pinnedExtension": "pass",
+        "nativeRecipeAndShopping": "pass"
+      }
+    },
+    {
+      "case": "default-rice",
+      "status": "pass",
+      "downloadSha256": "210335f28c366614e3a54876d3654b3b65b038a3dccf4525f65e317d5d2c46b9",
+      "oracles": {
+        "handwrittenDecimal": "pass",
+        "pinnedExtension": "pass",
+        "nativeRecipeAndShopping": "pass"
+      }
+    },
+    {
+      "case": "herb-barley",
+      "status": "pass",
+      "downloadSha256": "409972193aa3979d53e3f7b404db3b88b735369d3fcfcc1f44568eb2a416e221",
+      "oracles": {
+        "handwrittenDecimal": "pass",
+        "pinnedExtension": "pass",
+        "nativeRecipeAndShopping": "pass"
+      }
+    },
+    {
+      "case": "herb-rice",
+      "status": "pass",
+      "downloadSha256": "90e2e7dc873d318827124b1b0ab3b16feba9bba63358eb84c93bd45827011a63",
+      "oracles": {
+        "handwrittenDecimal": "pass",
+        "pinnedExtension": "pass",
+        "nativeRecipeAndShopping": "pass"
+      }
+    }
+  ],
+  "offlineDownloadSha256": "90e2e7dc873d318827124b1b0ab3b16feba9bba63358eb84c93bd45827011a63",
+  "offlineArtifactSha256": "32488e213de82bc2d6dd77fc84867a9d18f0ffb24881e29557460074c3f55b40",
+  "runtimeErrors": 0,
+  "externalRequests": 0,
+  "reviewedVisuals": 10,
+  "sourceHashes": {
+    "index.html": "bedecde1d1725a66317d09a9bec99a60b2967343207b54772bcafb05ee1989c3",
+    "src/compiler.js": "5c8da2778f2780fd1b846fec2589941c67ed5ad54ccf0bab3dd54db3dae19a7f",
+    "src/app.js": "60435858394a84e3bfe845a8d47ba0c58ab25fe7248db05a2018a5666fe584c0",
+    "src/limits.js": "9d5b6d39524c6ef3013c526d32bd7493b5826ad06fa618e157d9443b356db384",
+    "src/sample.js": "0ae9f149c8eafa1253108efb96a78a4fed0b259f7218031be390915c4880ce84",
+    "src/styles.css": "14b5542b53dacbafc1f4110d2a2e3379bb3ba2deb8d81661eff511cab205e124",
+    "scripts/build.mjs": "e6af75eec2e057af910f81fb602b6c12d0f5bec0851d75500663307ea81ffc80",
+    "tests/browser/run.mjs": "acabcd143c0c92a4a4c55eda946eaa258494281b81b73df3bdea8f6686576ae3",
+    ".github/workflows/verify.yml": "48dfebaa0214ee57990b6c52ffbd6fc686f6b7c4fa79c9655fe7cc5ec8fb533e"
+  },
+  "scope": "Named source commit only. Documentation/evidence closeout preserves all runtime and test files; its exact-head rerun is recorded separately by publication."
+}
