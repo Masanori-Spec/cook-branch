@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "authorship": "Handwritten fixture expectations, independent of compiler output and parser snapshots",
+  "source": "orchard-bowl.cook",
+  "cases": {
+    "default-barley": {
+      "variant": "*", "grain": "barley", "alternativeIndex": 0,
+      "metadata": {"title": "Orchard Bowl", "servings": 2},
+      "ingredients": [{"name":"cooked barley","quantity":"180","unit":"g"},{"name":"peas","quantity":"60","unit":"g"},{"name":"lemon juice","quantity":"15","unit":"ml"}],
+      "cookware": [{"name":"bowl","quantity":null}], "timers": [],
+      "sections": [{"name":"Base","steps":[
+        [{"type":"text","value":"Mix "},{"type":"ingredient","name":"cooked barley","quantity":"180","unit":"g"},{"type":"text","value":" with "},{"type":"ingredient","name":"peas","quantity":"60","unit":"g"},{"type":"text","value":" in a "},{"type":"cookware","name":"bowl","quantity":null},{"type":"text","value":"."}],
+        [{"type":"text","value":"Fold in "},{"type":"ingredient","name":"lemon juice","quantity":"15","unit":"ml"},{"type":"text","value":"."}]
+      ]}]
+    },
+    "default-rice": {
+      "variant": "*", "grain": "rice", "alternativeIndex": 1,
+      "metadata": {"title": "Orchard Bowl", "servings": 2},
+      "ingredients": [{"name":"cooked rice","quantity":"200","unit":"g"},{"name":"peas","quantity":"60","unit":"g"},{"name":"lemon juice","quantity":"15","unit":"ml"}],
+      "cookware": [{"name":"bowl","quantity":null}], "timers": [],
+      "sections": [{"name":"Base","steps":[
+        [{"type":"text","value":"Mix "},{"type":"ingredient","name":"cooked rice","quantity":"200","unit":"g"},{"type":"text","value":" with "},{"type":"ingredient","name":"peas","quantity":"60","unit":"g"},{"type":"text","value":" in a "},{"type":"cookware","name":"bowl","quantity":null},{"type":"text","value":"."}],
+        [{"type":"text","value":"Fold in "},{"type":"ingredient","name":"lemon juice","quantity":"15","unit":"ml"},{"type":"text","value":"."}]
+      ]}]
+    },
+    "herb-barley": {
+      "variant": "herb", "grain": "barley", "alternativeIndex": 0,
+      "metadata": {"title": "Orchard Bowl", "servings": 2},
+      "ingredients": [{"name":"cooked barley","quantity":"180","unit":"g"},{"name":"peas","quantity":"60","unit":"g"},{"name":"herb dressing","quantity":"25","unit":"ml"},{"name":"parsley","quantity":"3","unit":"g"}],
+      "cookware": [{"name":"bowl","quantity":null}], "timers": [{"name":"rest","quantity":"2","unit":"minutes"}],
+      "sections": [{"name":"Base","steps":[
+        [{"type":"text","value":"Mix "},{"type":"ingredient","name":"cooked barley","quantity":"180","unit":"g"},{"type":"text","value":" with "},{"type":"ingredient","name":"peas","quantity":"60","unit":"g"},{"type":"text","value":" in a "},{"type":"cookware","name":"bowl","quantity":null},{"type":"text","value":"."}],
+        [{"type":"text","value":"Fold in "},{"type":"ingredient","name":"herb dressing","quantity":"25","unit":"ml"},{"type":"text","value":"."}]
+      ]},{"name":"Finish","steps":[
+        [{"type":"text","value":"Add "},{"type":"ingredient","name":"parsley","quantity":"3","unit":"g"},{"type":"text","value":", then wait for "},{"type":"timer","name":"rest","quantity":"2","unit":"minutes"},{"type":"text","value":"."}]
+      ]}]
+    },
+    "herb-rice": {
+      "variant": "herb", "grain": "rice", "alternativeIndex": 1,
+      "metadata": {"title": "Orchard Bowl", "servings": 2},
+      "ingredients": [{"name":"cooked rice","quantity":"200","unit":"g"},{"name":"peas","quantity":"60","unit":"g"},{"name":"herb dressing","quantity":"25","unit":"ml"},{"name":"parsley","quantity":"3","unit":"g"}],
+      "cookware": [{"name":"bowl","quantity":null}], "timers": [{"name":"rest","quantity":"2","unit":"minutes"}],
+      "sections": [{"name":"Base","steps":[
+        [{"type":"text","value":"Mix "},{"type":"ingredient","name":"cooked rice","quantity":"200","unit":"g"},{"type":"text","value":" with "},{"type":"ingredient","name":"peas","quantity":"60","unit":"g"},{"type":"text","value":" in a "},{"type":"cookware","name":"bowl","quantity":null},{"type":"text","value":"."}],
+        [{"type":"text","value":"Fold in "},{"type":"ingredient","name":"herb dressing","quantity":"25","unit":"ml"},{"type":"text","value":"."}]
+      ]},{"name":"Finish","steps":[
+        [{"type":"text","value":"Add "},{"type":"ingredient","name":"parsley","quantity":"3","unit":"g"},{"type":"text","value":", then wait for "},{"type":"timer","name":"rest","quantity":"2","unit":"minutes"},{"type":"text","value":"."}]
+      ]}]
+    }
+  }
+}

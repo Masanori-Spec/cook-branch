@@ -1,0 +1,12 @@
+{
+  "status": "pass",
+  "nativeSourceIngredients": [
+    "cooked barley",
+    "peas",
+    "lemon juice",
+    "herb dressing",
+    "parsley"
+  ],
+  "nativeSourceSteps": 4,
+  "interpretation": "Unprepared extension syntax is ordinary native text and leaks both dressing branches; this is a semantic negative control, not a native parser bug."
+}

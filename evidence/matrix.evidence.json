@@ -1,0 +1,59 @@
+{
+  "status": "pass",
+  "origin": "actual-compiler",
+  "fixture": "Orchard Bowl",
+  "cases": [
+    {
+      "case": "default-barley",
+      "status": "pass",
+      "exportSha256": "adc18f3d9cbabf93456953b4770d7642176823f1c5c5b637d588a40b0c542912",
+      "oracles": {
+        "handwrittenDecimal": "pass",
+        "pinnedExtension": "pass",
+        "nativeRecipeAndShopping": "pass"
+      }
+    },
+    {
+      "case": "default-rice",
+      "status": "pass",
+      "exportSha256": "210335f28c366614e3a54876d3654b3b65b038a3dccf4525f65e317d5d2c46b9",
+      "oracles": {
+        "handwrittenDecimal": "pass",
+        "pinnedExtension": "pass",
+        "nativeRecipeAndShopping": "pass"
+      }
+    },
+    {
+      "case": "herb-barley",
+      "status": "pass",
+      "exportSha256": "409972193aa3979d53e3f7b404db3b88b735369d3fcfcc1f44568eb2a416e221",
+      "oracles": {
+        "handwrittenDecimal": "pass",
+        "pinnedExtension": "pass",
+        "nativeRecipeAndShopping": "pass"
+      }
+    },
+    {
+      "case": "herb-rice",
+      "status": "pass",
+      "exportSha256": "90e2e7dc873d318827124b1b0ab3b16feba9bba63358eb84c93bd45827011a63",
+      "oracles": {
+        "handwrittenDecimal": "pass",
+        "pinnedExtension": "pass",
+        "nativeRecipeAndShopping": "pass"
+      }
+    }
+  ],
+  "negativeControl": {
+    "status": "pass",
+    "nativeSourceIngredients": [
+      "cooked barley",
+      "peas",
+      "lemon juice",
+      "herb dressing",
+      "parsley"
+    ],
+    "nativeSourceSteps": 4,
+    "interpretation": "Unprepared extension syntax is ordinary native text and leaks both dressing branches; this is a semantic negative control, not a native parser bug."
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema": "cookbranch.independent-review/v1",
+  "status": "pass-with-hosted-gates-pending",
+  "date": "2026-10-06",
+  "scope": "fresh read-only review of reconstructed source",
+  "reviewedFiles": {
+    "src/compiler.js": "5c8da2778f2780fd1b846fec2589941c67ed5ad54ccf0bab3dd54db3dae19a7f",
+    "src/app.js": "60435858394a84e3bfe845a8d47ba0c58ab25fe7248db05a2018a5666fe584c0",
+    "src/limits.js": "9d5b6d39524c6ef3013c526d32bd7493b5826ad06fa618e157d9443b356db384",
+    "scripts/build.mjs": "e6af75eec2e057af910f81fb602b6c12d0f5bec0851d75500663307ea81ffc80",
+    "tests/browser/run.mjs": "acabcd143c0c92a4a4c55eda946eaa258494281b81b73df3bdea8f6686576ae3"
+  },
+  "freshCanonicalConsumerCases": 4,
+  "consumers": [
+    "handwritten manifest",
+    "alpha.47 explicit choices",
+    "CookCLI recipe and shopping JSON"
+  ],
+  "resolvedFindings": [
+    "offline replacement-string expansion corrupted dollar signs; callbacks and exact embedded-byte/module-parse regression verified",
+    "historical async decision snapshot, token/comment/preparation, BOM, metadata/YAML classification regressions retested",
+    "receipt export/import limits reviewed",
+    "keyboard focus harness now uses real navigation before focus-visible assertion"
+  ],
+  "sourceBlockers": [],
+  "pending": [
+    "exact refreshed package member/hash verification",
+    "hosted browser async/import tests",
+    "real browser exports through three oracles",
+    "desktop/mobile/print pixel review"
+  ],
+  "browserExecuted": false,
+  "independentlyRerunCompilerAndLimitTests": 125,
+  "reviewedAreas": [
+    "UI revision guards for async invalidation",
+    "CRLF source backing",
+    "symmetric 8 MiB receipt limit",
+    "text-only source rendering",
+    "independent native/oracle expectations",
+    "hosted browser harness"
+  ]
+}

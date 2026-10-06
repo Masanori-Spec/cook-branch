@@ -1,0 +1,44 @@
+{
+  "schema": "cookbranch.local-verification/v1",
+  "status": "pass",
+  "date": "2026-10-06",
+  "execution": "fresh tests on reconstructed source",
+  "nodeTests": {
+    "total": 129,
+    "passed": 129,
+    "failed": 0,
+    "compilerTests": 123,
+    "limitTests": 2,
+    "buildAndServerTests": 4
+  },
+  "actualCompilerExports": 4,
+  "independentOraclesPerExport": [
+    "handwritten Decimal and ordered manifest",
+    "pinned explicit-choice alpha.47 parser",
+    "CookCLI 0.37.0 recipe and shopping JSON"
+  ],
+  "profileCases": 36,
+  "oracleTestMethods": 6,
+  "semanticMutantsPerOracle": 15,
+  "semanticMutationRejections": 45,
+  "freshDependencyFetch": "passed with archive and installed-byte integrity",
+  "offlineBuild": "pass; exact embedded source bytes and module syntax checked",
+  "sourceHashes": {
+    "src/compiler.js": "5c8da2778f2780fd1b846fec2589941c67ed5ad54ccf0bab3dd54db3dae19a7f",
+    "src/app.js": "60435858394a84e3bfe845a8d47ba0c58ab25fe7248db05a2018a5666fe584c0",
+    "src/limits.js": "9d5b6d39524c6ef3013c526d32bd7493b5826ad06fa618e157d9443b356db384",
+    "src/sample.js": "0ae9f149c8eafa1253108efb96a78a4fed0b259f7218031be390915c4880ce84",
+    "src/styles.css": "14b5542b53dacbafc1f4110d2a2e3379bb3ba2deb8d81661eff511cab205e124",
+    "scripts/build.mjs": "e6af75eec2e057af910f81fb602b6c12d0f5bec0851d75500663307ea81ffc80",
+    "tests/browser/run.mjs": "acabcd143c0c92a4a4c55eda946eaa258494281b81b73df3bdea8f6686576ae3",
+    ".github/workflows/verify.yml": "48dfebaa0214ee57990b6c52ffbd6fc686f6b7c4fa79c9655fe7cc5ec8fb533e"
+  },
+  "historicalCompilerHashComparison": "matches 5c8da2778f2780fd1b846fec2589941c67ed5ad54ccf0bab3dd54db3dae19a7f after actual reconstruction and hashing; other recreated files are not claimed identical",
+  "independentReview": "pass for reconstructed source; exact final archive verification separate",
+  "hostedBrowser": "pending",
+  "visualReview": "pending",
+  "limits": {
+    "sourceUtf8Bytes": 100000,
+    "receiptUtf8Bytes": 8388608
+  }
+}

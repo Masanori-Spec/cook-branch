@@ -1,0 +1,877 @@
+{
+  "status": "pass",
+  "consumer": "@tmlmt/cooklang-parser@3.0.0-alpha.47",
+  "toolIntegrity": "archives-and-installed-bytes-verified",
+  "positiveCases": [
+    {
+      "case": "repeated-names",
+      "status": "pass",
+      "explicitChoices": [
+        [
+          "ingredient-item-0",
+          0
+        ],
+        [
+          "ingredient-item-1",
+          0
+        ]
+      ],
+      "exportSha256": "50b9c040e3712d782ae6183a42f951316f1e2fdc380b0b684d9e5d27dfe347f5",
+      "normalized": {
+        "metadata": {},
+        "ingredientQuantities": [
+          [
+            "milk",
+            "1/1",
+            "cup",
+            null
+          ],
+          [
+            "milk",
+            "3/1",
+            "cup",
+            null
+          ]
+        ],
+        "sections": [
+          {
+            "name": "Mix",
+            "steps": [
+              [
+                [
+                  "text",
+                  "Mix "
+                ],
+                [
+                  "ingredient",
+                  "milk",
+                  "1/1",
+                  "cup",
+                  null
+                ],
+                [
+                  "text",
+                  "."
+                ]
+              ],
+              [
+                [
+                  "text",
+                  "Add "
+                ],
+                [
+                  "ingredient",
+                  "milk",
+                  "3/1",
+                  "cup",
+                  null
+                ],
+                [
+                  "text",
+                  "."
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "case": "fractions",
+      "status": "pass",
+      "explicitChoices": [
+        [
+          "ingredient-item-0",
+          1
+        ]
+      ],
+      "exportSha256": "8048246d8b9ceaec55bffe15b02a38ce06d5d1021da9ab0ef920d6289f4737fc",
+      "normalized": {
+        "metadata": {},
+        "ingredientQuantities": [
+          [
+            "oats",
+            "3/4",
+            "cup",
+            null
+          ],
+          [
+            "salt",
+            "1/4",
+            "tsp",
+            null
+          ]
+        ],
+        "sections": [
+          {
+            "name": "Measure",
+            "steps": [
+              [
+                [
+                  "text",
+                  "Add "
+                ],
+                [
+                  "ingredient",
+                  "oats",
+                  "3/4",
+                  "cup",
+                  null
+                ],
+                [
+                  "text",
+                  " and "
+                ],
+                [
+                  "ingredient",
+                  "salt",
+                  "1/4",
+                  "tsp",
+                  null
+                ],
+                [
+                  "text",
+                  "."
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "case": "unicode-crlf",
+      "status": "pass",
+      "explicitChoices": [
+        [
+          "ingredient-item-0",
+          1
+        ]
+      ],
+      "exportSha256": "55c159fb7bfcf6c56b084242a5ccc589b768195959b1e2ffa7356ead4c384c2c",
+      "normalized": {
+        "metadata": {},
+        "ingredientQuantities": [
+          [
+            "豆乳",
+            "125/1",
+            "ml",
+            null
+          ],
+          [
+            "米",
+            "60/1",
+            "g",
+            null
+          ]
+        ],
+        "sections": [
+          {
+            "name": "準備",
+            "steps": [
+              [
+                [
+                  "text",
+                  "混ぜる "
+                ],
+                [
+                  "ingredient",
+                  "豆乳",
+                  "125/1",
+                  "ml",
+                  null
+                ],
+                [
+                  "text",
+                  " と "
+                ],
+                [
+                  "ingredient",
+                  "米",
+                  "60/1",
+                  "g",
+                  null
+                ],
+                [
+                  "text",
+                  "。"
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "case": "comma-tag-intersection",
+      "status": "pass",
+      "explicitChoices": [
+        [
+          "ingredient-item-0",
+          1
+        ]
+      ],
+      "exportSha256": "0b41546b984c87e7ad2379a389e1c7bd3b25d42f5d9abf0bdb8f79ec45ae8f23",
+      "normalized": {
+        "metadata": {},
+        "ingredientQuantities": [
+          [
+            "beans",
+            "12/1",
+            "g",
+            null
+          ]
+        ],
+        "sections": [
+          {
+            "name": "Base",
+            "steps": [
+              [
+                [
+                  "text",
+                  "Add "
+                ],
+                [
+                  "ingredient",
+                  "beans",
+                  "12/1",
+                  "g",
+                  null
+                ],
+                [
+                  "text",
+                  "."
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "rejectedCases": [
+    {
+      "case": "comment-boundary",
+      "status": "pass",
+      "compilerCode": "UNSUPPORTED_COMMENT_BOUNDARY",
+      "independentConsumerFact": "The -- delimiter ends the step after unquantified milk; there is no authored alternative."
+    },
+    {
+      "case": "attached-preparation",
+      "status": "pass",
+      "compilerCode": "UNSUPPORTED_PREPARATION",
+      "independentConsumerFact": "(cold) belongs to water preparation. Retaining it after choosing milk would assign preparation to the wrong ingredient."
+    }
+  ],
+  "classificationCases": [
+    {
+      "case": "bom-step",
+      "status": "pass",
+      "result": "preserved",
+      "variants": [
+        "*",
+        "herb"
+      ],
+      "consumerClassification": {
+        "metadata": {},
+        "sections": [
+          [
+            "",
+            [],
+            [
+              "step",
+              [
+                "herb"
+              ]
+            ],
+            [
+              "step",
+              [
+                "*"
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "case": "bom-section",
+      "status": "pass",
+      "result": "preserved",
+      "variants": [
+        "herb"
+      ],
+      "consumerClassification": {
+        "metadata": {},
+        "sections": [
+          [
+            "Prep",
+            [
+              "herb"
+            ],
+            [
+              "step",
+              []
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "case": "bom-metadata",
+      "status": "pass",
+      "result": "preserved",
+      "variants": [
+        "*"
+      ],
+      "consumerClassification": {
+        "metadata": {
+          "title": "Test"
+        },
+        "sections": [
+          [
+            "",
+            [],
+            [
+              "step",
+              []
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "case": "bom-note",
+      "status": "pass",
+      "result": "preserved",
+      "variants": [
+        "*"
+      ],
+      "consumerClassification": {
+        "metadata": {},
+        "sections": [
+          [
+            "",
+            [],
+            [
+              "note",
+              []
+            ],
+            [
+              "step",
+              []
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "case": "comment-prefix-ordinary",
+      "status": "pass",
+      "result": "rejected",
+      "code": "UNSUPPORTED_COMMENT_BOUNDARY",
+      "consumerClassification": {
+        "metadata": {},
+        "sections": [
+          [
+            "",
+            [],
+            [
+              "step",
+              []
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "case": "mixed-comments-across-newline",
+      "status": "pass",
+      "result": "rejected",
+      "code": "UNSUPPORTED_COMMENT_BOUNDARY",
+      "consumerClassification": {
+        "metadata": {},
+        "sections": [
+          [
+            "",
+            [],
+            [
+              "step",
+              [
+                "herb"
+              ]
+            ],
+            [
+              "step",
+              []
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "case": "multiline-block-comment",
+      "status": "pass",
+      "result": "rejected",
+      "code": "UNSUPPORTED_COMMENT_BOUNDARY",
+      "consumerClassification": {
+        "metadata": {},
+        "sections": [
+          [
+            "",
+            [],
+            [
+              "step",
+              []
+            ],
+            [
+              "step",
+              []
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "case": "comment-only-empty-recipe",
+      "status": "pass",
+      "result": "rejected",
+      "code": "EMPTY_RECIPE",
+      "consumerClassification": {
+        "metadata": {},
+        "sections": []
+      }
+    },
+    {
+      "case": "standalone-comment-with-instruction",
+      "status": "pass",
+      "result": "preserved",
+      "variants": [
+        "*"
+      ],
+      "consumerClassification": {
+        "metadata": {},
+        "sections": [
+          [
+            "",
+            [],
+            [
+              "step",
+              []
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "case": "indented-yaml",
+      "status": "pass",
+      "result": "rejected",
+      "code": "UNSUPPORTED_METADATA_BOUNDARY",
+      "consumerClassification": {
+        "metadata": {
+          "title": "Test"
+        },
+        "sections": [
+          [
+            "",
+            [],
+            [
+              "step",
+              []
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "case": "later-yaml",
+      "status": "pass",
+      "result": "rejected",
+      "code": "UNSUPPORTED_METADATA_BOUNDARY",
+      "consumerClassification": {
+        "metadata": {
+          "title": "\"@ghost{4%g}\""
+        },
+        "sections": [
+          [
+            "",
+            [],
+            [
+              "step",
+              []
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "case": "comment-exposes-tag",
+      "status": "pass",
+      "result": "rejected",
+      "code": "UNSUPPORTED_COMMENT_BOUNDARY",
+      "consumerClassification": {
+        "metadata": {},
+        "sections": [
+          [
+            "",
+            [],
+            [
+              "step",
+              [
+                "herb"
+              ]
+            ],
+            [
+              "step",
+              []
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "case": "comment-exposes-note",
+      "status": "pass",
+      "result": "rejected",
+      "code": "UNSUPPORTED_COMMENT_BOUNDARY",
+      "consumerClassification": {
+        "metadata": {},
+        "sections": [
+          [
+            "",
+            [],
+            [
+              "note",
+              []
+            ],
+            [
+              "step",
+              []
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "case": "comment-exposes-section",
+      "status": "pass",
+      "result": "rejected",
+      "code": "UNSUPPORTED_COMMENT_BOUNDARY",
+      "consumerClassification": {
+        "metadata": {},
+        "sections": [
+          [
+            "Prep",
+            [
+              "herb"
+            ],
+            [
+              "step",
+              []
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "case": "chained-comments-expose-tag",
+      "status": "pass",
+      "result": "rejected",
+      "code": "UNSUPPORTED_COMMENT_BOUNDARY",
+      "consumerClassification": {
+        "metadata": {},
+        "sections": [
+          [
+            "",
+            [],
+            [
+              "step",
+              [
+                "herb"
+              ]
+            ],
+            [
+              "step",
+              []
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "case": "chained-comments-expose-note",
+      "status": "pass",
+      "result": "rejected",
+      "code": "UNSUPPORTED_COMMENT_BOUNDARY",
+      "consumerClassification": {
+        "metadata": {},
+        "sections": [
+          [
+            "",
+            [],
+            [
+              "note",
+              []
+            ],
+            [
+              "step",
+              []
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "case": "chained-comments-expose-tagged-note",
+      "status": "pass",
+      "result": "rejected",
+      "code": "UNSUPPORTED_COMMENT_BOUNDARY",
+      "consumerClassification": {
+        "metadata": {},
+        "sections": [
+          [
+            "",
+            [],
+            [
+              "note",
+              [
+                "herb"
+              ]
+            ],
+            [
+              "step",
+              []
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "case": "mixed-metadata-before-tag",
+      "status": "pass",
+      "result": "rejected",
+      "code": "UNSUPPORTED_PARAGRAPH_BOUNDARY",
+      "consumerClassification": {
+        "metadata": {},
+        "sections": [
+          [
+            "",
+            [],
+            [
+              "note",
+              []
+            ],
+            [
+              "step",
+              [
+                "herb"
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "case": "mixed-metadata-after-step",
+      "status": "pass",
+      "result": "rejected",
+      "code": "UNSUPPORTED_PARAGRAPH_BOUNDARY",
+      "consumerClassification": {
+        "metadata": {},
+        "sections": [
+          [
+            "",
+            [],
+            [
+              "step",
+              []
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "case": "metadata-after-heading",
+      "status": "pass",
+      "result": "rejected",
+      "code": "UNSUPPORTED_PARAGRAPH_BOUNDARY",
+      "consumerClassification": {
+        "metadata": {},
+        "sections": [
+          [
+            "Prep",
+            [],
+            [
+              "note",
+              []
+            ],
+            [
+              "step",
+              []
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "case": "metadata-before-heading",
+      "status": "pass",
+      "result": "rejected",
+      "code": "UNSUPPORTED_PARAGRAPH_BOUNDARY",
+      "consumerClassification": {
+        "metadata": {},
+        "sections": [
+          [
+            "",
+            [],
+            [
+              "note",
+              []
+            ]
+          ],
+          [
+            "Prep",
+            [],
+            [
+              "step",
+              []
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "case": "heading-after-step",
+      "status": "pass",
+      "result": "rejected",
+      "code": "UNSUPPORTED_PARAGRAPH_BOUNDARY",
+      "consumerClassification": {
+        "metadata": {},
+        "sections": [
+          [
+            "",
+            [],
+            [
+              "step",
+              []
+            ]
+          ],
+          [
+            "Prep",
+            [
+              "herb"
+            ],
+            [
+              "step",
+              []
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "case": "heading-before-tag",
+      "status": "pass",
+      "result": "rejected",
+      "code": "UNSUPPORTED_PARAGRAPH_BOUNDARY",
+      "consumerClassification": {
+        "metadata": {},
+        "sections": [
+          [
+            "Prep",
+            [],
+            [
+              "step",
+              [
+                "herb"
+              ]
+            ],
+            [
+              "step",
+              [
+                "*"
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "case": "comment-only-empty-selection",
+      "status": "pass",
+      "result": "rejected",
+      "code": "EMPTY_SELECTION"
+    },
+    {
+      "case": "leading-nbsp",
+      "status": "pass",
+      "result": "preserved",
+      "variants": [
+        "*",
+        "herb"
+      ]
+    },
+    {
+      "case": "leading-em-space",
+      "status": "pass",
+      "result": "preserved",
+      "variants": [
+        "*",
+        "herb"
+      ]
+    },
+    {
+      "case": "leading-ideographic-space",
+      "status": "pass",
+      "result": "preserved",
+      "variants": [
+        "*",
+        "herb"
+      ]
+    }
+  ],
+  "downstreamAnnotationFacts": [
+    {
+      "case": "ingredient",
+      "status": "pass",
+      "compilerCode": "UNSUPPORTED_NOTE_CONTENT",
+      "nativeInventory": {
+        "ingredients": [
+          "milk",
+          "salt"
+        ],
+        "cookware": [],
+        "timers": []
+      }
+    },
+    {
+      "case": "cookware",
+      "status": "pass",
+      "compilerCode": "UNSUPPORTED_NOTE_CONTENT",
+      "nativeInventory": {
+        "ingredients": [
+          "milk"
+        ],
+        "cookware": [
+          "pan"
+        ],
+        "timers": []
+      }
+    },
+    {
+      "case": "timer",
+      "status": "pass",
+      "compilerCode": "UNSUPPORTED_NOTE_CONTENT",
+      "nativeInventory": {
+        "ingredients": [
+          "milk"
+        ],
+        "cookware": [],
+        "timers": [
+          "rest"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#244e40"><meta name="description" content="Choose explicit Cooklang recipe branches and export one reviewed recipe, entirely in your browser."><title>CookBranch · Recipe variant workbench</title><style>:root{font-family:Inter,"Noto Sans CJK JP","Hiragino Kaku Gothic ProN",system-ui,sans-serif;color:#243b32;background:#f6f4ed;font-size:15px;--green:#244e40;--muted:#68776f;--line:#dce1d6}*{box-sizing:border-box}body{margin:0}button,select,textarea{font:inherit}button{cursor:pointer;touch-action:manipulation}button:disabled{cursor:not-allowed;opacity:.45}a{color:inherit}button:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #d1782e;outline-offset:4px}.topbar{max-width:1370px;margin:auto;padding:25px 48px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);gap:16px}.brand{text-decoration:none;font-size:24px;font-weight:730;display:flex;align-items:center;gap:12px;letter-spacing:-.8px}.brand small{display:block;font-size:8px;letter-spacing:1.4px;font-weight:600;margin-top:3px}.brand-icon{background:var(--green);color:#f6f4ed;border-radius:12px;width:38px;height:43px;display:grid;place-items:center;font-size:40px;line-height:1;transform:rotate(-8deg)}.header-right{display:flex;align-items:center;gap:28px}.privacy{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:600;color:var(--muted)}.privacy i{width:6px;height:6px;border-radius:50%;background:#6b916d}.text-button{border:0;background:transparent;color:var(--green);font-weight:650;padding:9px 2px;font-size:12px}#language{border:1px solid var(--line);border-radius:5px;padding:7px 10px;min-width:43px}main{max-width:1274px;margin:auto;padding:0 40px}.intro{display:flex;align-items:center;justify-content:space-between;min-height:295px;padding:36px 10px 40px;gap:20px}.eyebrow{font-size:10px;letter-spacing:2.5px;color:#8c744d;font-weight:700;margin:0 0 17px}.intro h1{white-space:pre-line;font-weight:720;font-size:38px;line-height:1.5;letter-spacing:.015em;margin:0}.lede{font-size:13px;line-height:1.9;color:var(--muted);max-width:610px;margin:15px 0 0}.recipe-mark{position:relative;width:230px;height:220px;flex:none;background:radial-gradient(ellipse,#e7eadb 0%,transparent 70%)}.stem{height:125px;width:3px;background:#3b6951;position:absolute;left:115px;top:30px;transform:rotate(24deg);border-radius:6px}.leaf{width:48px;height:25px;border:1.5px solid #4a7556;border-radius:100% 0 100% 0;position:absolute;background:#d4ddc7}.one{left:76px;top:53px;transform:rotate(36deg)}.two{left:115px;top:71px;transform:rotate(-15deg);background:#a2b995}.three{left:61px;top:99px;transform:rotate(40deg);background:#b9caaa}.bowl{width:140px;height:47px;border:1.5px solid #738865;border-top:0;border-radius:0 0 90px 90px;position:absolute;left:47px;top:147px;background:#e7e8d9}.recipe-mark small{font-size:8px;letter-spacing:2px;position:absolute;bottom:0;left:26px;color:#859071}.workspace{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:24px;align-items:start}.source-column,.review-column{min-width:0}.panel{background:#fffefa;border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 2px 3px #223a2803}.source-panel,.choice-panel{padding:24px}.panel-heading{display:flex;justify-content:space-between;align-items:center;gap:12px}.panel-heading>div{display:flex;align-items:center;gap:10px;min-width:0}.panel-heading h2{font-size:15px;margin:0;font-weight:690}.number{font:11px ui-monospace,monospace;letter-spacing:1px;color:#8b9a87}.file-badge{color:#7b806f;border:1px solid #e9e9dc;padding:5px 7px;background:#f7f6ee;border-radius:4px;font:10px ui-monospace,monospace;max-width:48%;overflow-wrap:anywhere}.section-help{font-size:12px;color:var(--muted);line-height:1.75;margin:17px 0}.source-tools{display:flex;gap:18px;align-items:center;justify-content:space-between;margin-bottom:15px}.button{border:1px solid transparent;border-radius:5px;display:inline-flex;align-items:center;justify-content:center;gap:16px;padding:12px 16px;font-weight:650;font-size:12px;line-height:1.45;min-height:42px}.secondary{color:var(--green);border-color:#cbd5c6;background:transparent}.secondary:hover:not(:disabled){background:#edf1e7}.primary{color:#fff;background:var(--green)}.primary:hover:not(:disabled){background:#1a3b30}.wide{width:100%;justify-content:space-between}#analyze{justify-content:center}.source-panel textarea{display:block;resize:vertical;background:#f3f4ed;color:#344d3c;border:1px solid #e1e5d8;border-radius:6px 6px 0 0;width:100%;height:410px;min-height:240px;max-height:900px;font:11px/1.9 ui-monospace,"SFMono-Regular",Consolas,monospace;padding:15px;tab-size:2;white-space:pre;overflow:auto}.editor-foot{display:flex;justify-content:space-between;gap:10px;border:1px solid #e1e5d8;border-top:0;background:#ecefe4;padding:8px 12px;font-size:9px;color:#7c8977;border-radius:0 0 5px 5px}.dialect{font-size:10px;color:#7d8879;line-height:1.8;margin:13px 0 17px}.scope,.receipt-tools{margin:17px 4px;color:var(--muted);font-size:11px;line-height:1.9}.scope summary,.receipt-tools summary{cursor:pointer;font-weight:650;color:#536b57}.pill{font-size:9px;color:#617858;border:1px solid #dbe5d3;background:#f0f5e9;border-radius:20px;padding:5px 8px;white-space:nowrap}.pill.amber{background:#fff4e5;color:#a17035;border-color:#f3e5ca}.variant-field{display:grid;grid-template-columns:1fr 1.2fr;align-items:center;gap:15px;margin:22px 0}.variant-field label{font-size:12px;font-weight:650}.variant-field select{width:100%;min-width:0;padding:10px 11px;border:1px solid #d7decd;border-radius:5px;color:var(--green);background:#fbfcf7;font-size:12px}.alt-field{border:0;padding:0;margin:20px 0 0}.alt-field legend{font-size:12px;font-weight:650;margin:0 0 10px;padding:0;width:100%}.alt-field legend small{float:right;color:#84917c;font-weight:400;font-size:10px}.alt-options{display:flex;gap:10px}.alt-option{flex:1;min-width:0;border:1px solid #dbe2d0;border-radius:5px;padding:12px;background:#fbfcf7;display:flex;align-items:flex-start;gap:8px;cursor:pointer}.alt-option:has(input:checked){border-color:#4f7758;background:#edf3e4;box-shadow:0 0 0 1px #4f7758}.alt-option input{accent-color:var(--green);margin:3px 0 0;width:14px;height:14px;flex:none}.option-label{min-width:0;overflow-wrap:anywhere}.option-label b{display:block;font-size:12px;font-weight:600}.option-label small{display:block;font:10px ui-monospace,monospace;color:#718268;margin-top:6px}.choice-hint{font-size:10px;color:#8a927e;line-height:1.8;margin:15px 0 20px}.status{margin:13px 0;min-height:22px;color:#6d7e60;font-size:11px;line-height:1.8;padding:0 5px;overflow-wrap:anywhere}.status.error{background:#fff0e6;border:1px solid #ecc6ac;border-radius:6px;padding:12px;color:#934e25}.result-panel>.panel-heading{padding:23px 24px 19px;border-bottom:1px solid #edf0e5}#empty-state{text-align:center;padding:22px 35px 39px;color:#9da592}.empty-branch{font-size:43px;color:#b9c5ae;line-height:1}#empty-state h3{font-size:13px;color:#7f8f74;margin:10px 0}#empty-state p{font-size:11px;line-height:1.85;max-width:310px;margin:auto}.stats{display:flex;gap:25px;padding:19px 24px;background:#f4f6ed;border-bottom:1px solid #e4e9da}.stats>div{display:flex;align-items:baseline;gap:8px}.stats b{font-size:22px;font-weight:600}.stats span{font-size:9px;color:#7a896d}.review-tabs{display:flex;gap:20px;padding:0 24px;border-bottom:1px solid #e7ecdf}.review-tabs button{background:none;border:0;border-bottom:2px solid transparent;padding:15px 0 11px;color:#89977b;font-size:11px;white-space:nowrap}.review-tabs button[aria-selected=true]{color:#355a3b;border-color:#55774b;font-weight:700}.review-view{padding:20px 24px;min-height:110px}.recipe-section{font:11px ui-monospace,monospace;letter-spacing:1px;text-transform:uppercase;color:#8a956e;margin:4px 0 12px}.recipe-step{display:grid;grid-template-columns:22px 1fr;gap:10px;padding:0 0 15px;font-size:12px;line-height:1.9;overflow-wrap:anywhere}.step-num{height:20px;width:20px;border-radius:50%;background:#eff2e6;color:#798966;text-align:center;font-size:10px;line-height:20px;margin-top:3px}.recipe-step p{margin:0}.recipe-note{font-size:11px;line-height:1.9;color:#849070;border-left:2px solid #d7dfc9;padding-left:12px;margin:0 0 16px;white-space:pre-wrap;overflow-wrap:anywhere}.diff-heading{font-size:11px;margin:0 0 10px;color:#6f805d}.diff-item{font:11px/1.8 ui-monospace,monospace;display:flex;gap:9px;padding:6px 0;border-bottom:1px solid #edf0e6;overflow-wrap:anywhere}.diff-item .sign{color:#728e59}.diff-item.removed{color:#9a7c60}.diff-item.removed .sign{color:#b48556}.removed-branches{margin-top:20px}.branch-row{font-size:11px;line-height:1.8;border-left:2px solid #dfd7bd;padding-left:10px;margin:8px 0;color:#948361}.branch-row small{display:block;font-size:9px;color:#b0a388}#output{font:10px/1.9 ui-monospace,monospace;margin:0;white-space:pre-wrap;overflow-wrap:anywhere;max-height:340px;overflow:auto}.export-tools{display:flex;gap:9px;flex-wrap:wrap;padding:17px 24px 0;border-top:1px solid #e8eddf}.export-tools .button{font-size:10px;padding:10px 13px;min-height:38px}.export-tools .text-button{font-size:10px}.export-note{font-size:9px;line-height:1.8;color:#94a080;margin:12px 24px 19px}.how-it-works{margin:67px 0 40px;padding:0 10px}.how-it-works>.eyebrow{font-size:9px;margin-bottom:10px}.how-it-works>h2{font-size:21px;font-weight:600;margin:0 0 30px}.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}.how-grid article{position:relative;padding-left:37px}.how-grid article>span{position:absolute;left:0;color:#9cab87;font-size:22px;top:-3px}.how-grid h3{font-size:12px;margin:0 0 9px}.how-grid p{font-size:11px;line-height:1.9;color:#869077;margin:0;max-width:280px}footer{border-top:1px solid var(--line);max-width:1274px;margin:auto;padding:22px 40px;display:flex;justify-content:space-between;gap:25px;color:#79846f;font-size:10px}footer>span{font-weight:650}footer small{font-size:8px;font-weight:400;margin-left:8px}footer p{margin:0;font-size:9px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.skip{position:absolute;top:-80px;left:20px;background:#fff;padding:10px;z-index:10}.skip:focus{top:10px}[hidden]{display:none!important}@media(max-width:850px){.topbar{padding:21px 25px}main{padding:0 24px}.intro{min-height:280px}.intro h1{font-size:31px}.recipe-mark{width:175px;transform:scale(.85);transform-origin:right center}.workspace{gap:16px;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.source-panel,.choice-panel{padding:19px}.panel-heading{flex-wrap:wrap}.panel-heading h2{font-size:13px}.file-badge{max-width:100%}.alt-options{flex-direction:column}.stats{gap:18px}.stats>div{flex-direction:column;gap:2px}.review-view{padding:18px}.review-tabs{gap:14px;padding:0 18px}.how-grid{gap:20px}}@media(max-width:640px){.topbar{padding:19px 20px}.brand{font-size:20px}.brand small{font-size:7px}.brand-icon{width:32px;height:37px;font-size:33px}.privacy{display:none}.header-right{gap:10px}main{padding:0 18px}.intro{padding:31px 3px;min-height:auto}.intro h1{font-size:29px;line-height:1.55}.eyebrow{font-size:8px;letter-spacing:1.7px}.lede{font-size:11px;max-width:330px;line-height:2}.recipe-mark{display:none}.workspace{grid-template-columns:minmax(0,1fr);gap:6px}.source-panel textarea{height:282px}.source-panel,.choice-panel{padding:19px}.source-panel .panel-heading{flex-wrap:nowrap}.file-badge{font-size:8px;max-width:43%}.scope{margin:14px 3px 20px}.alt-options{flex-direction:row}.variant-field{grid-template-columns:1fr 1.25fr}.stats{padding:17px 20px;gap:32px}.stats>div{flex-direction:row;align-items:baseline;gap:7px}.stats span{font-size:8px}.result-panel>.panel-heading{padding:20px}.review-tabs{gap:22px}.review-view{padding:20px}.export-tools{padding:17px 20px 0}.how-it-works{margin:38px 0;padding:0 3px}.how-it-works>h2{font-size:19px;line-height:1.6}.how-grid{grid-template-columns:1fr;gap:25px}.how-grid article{padding-left:35px}.how-grid p{max-width:100%}footer{padding:23px 21px;flex-direction:column;gap:9px}footer p{font-size:8px}.receipt-tools{margin-bottom:0}}@media(max-width:350px){main{padding:0 12px}.topbar{padding:16px}.intro h1{font-size:27px}.source-panel,.choice-panel{padding:16px}.panel-heading h2{font-size:12px}.file-badge{font-size:7px}.alt-options{gap:7px}.alt-option{padding:10px 8px;gap:5px}.option-label b{font-size:11px}.stats{gap:20px}.review-tabs{gap:18px}.source-tools{gap:10px}.button{padding:11px 12px}.text-button{font-size:11px}}@media print{body{background:white;font-size:11px}.topbar,.intro,.source-column,.choice-panel,.status,.receipt-tools,.export-tools,.export-note,.how-it-works,footer,.review-tabs,.skip{display:none!important}main{padding:0;max-width:none}.workspace{display:block}.panel{border:0;box-shadow:none}.result-panel>.panel-heading{padding:0 0 15px}.review-view{display:block!important;padding:18px 0;border-bottom:1px solid #ddd}#view-cook{display:none!important}.stats{padding:12px;background:none}#empty-state{display:none}.branch-row,.recipe-step,.diff-item{break-inside:avoid}h3{break-after:avoid}@page{size:A4;margin:18mm}}
+</style></head><body>
+<a class="skip" href="#workbench" data-i18n="skip">作業エリアへ</a>
+<header class="topbar"><a class="brand" href="#" aria-label="CookBranch"><span class="brand-icon" aria-hidden="true">↳</span><span>CookBranch<small>RECIPE VARIANT WORKBENCH</small></span></a><div class="header-right"><span class="privacy"><i></i><span data-i18n="local">ブラウザ内で処理</span></span><button id="language" class="text-button" type="button" aria-label="Switch to English">EN</button></div></header>
+<main><section class="intro"><div><p class="eyebrow">ONE SOURCE. ONE CHOSEN RECIPE.</p><h1 data-i18n="title">分岐を選んで、
+ひとつのレシピに。</h1><p class="lede" data-i18n="lede">作者が用意した材料と手順の分岐を選択。内容を確認して、通常の Cooklang ファイルに書き出します。</p></div><div class="recipe-mark" aria-hidden="true"><span class="stem"></span><span class="leaf one"></span><span class="leaf two"></span><span class="leaf three"></span><span class="bowl"></span><small>SELECT · REVIEW · EXPORT</small></div></section>
+<section class="workspace" id="workbench" aria-label="Recipe workbench"><div class="source-column">
+<section class="panel source-panel"><div class="panel-heading"><div><span class="number">01</span><h2 data-i18n="sourceTitle">レシピのソース</h2></div><span class="file-badge" id="filename">orchard-bowl.cook</span></div><p class="section-help" data-i18n="sourceHelp">分岐つき Cooklang を貼り付けるか、ファイルを開いてください。</p><div class="source-tools"><button id="open-file" class="button secondary" type="button" data-i18n="open">.cook を開く</button><button id="reset" class="text-button" type="button" data-i18n="reset">サンプルに戻す</button><input id="file" type="file" accept=".cook,text/plain" hidden></div><label for="source" class="sr-only" data-i18n="sourceLabel">Cooklang ソース</label><textarea id="source" spellcheck="false" autocapitalize="off" autocomplete="off" wrap="off" aria-describedby="source-limit"></textarea><div class="editor-foot"><span data-i18n="sourceFoot">UTF-8 · 上限 100 KB</span><span id="source-lines"></span></div><p id="source-limit" class="dialect" data-i18n="dialect">対象: @tmlmt 拡張 alpha.47 の限定構文。通常の材料・器具・タイマー、明示された分岐のみ。</p><button id="analyze" class="button secondary wide" type="button" data-i18n="analyze">ソースを読み直す</button></section>
+<details class="scope"><summary data-i18n="scopeTitle">対応範囲と注意点</summary><p data-i18n="scopeText">共有手順、*（標準）と名前つき分岐、完全な {数量%単位} を持つ材料の選択肢に対応。セクションと手順の両方に一致する分岐だけを残します。</p><p data-i18n="scopeNo">分量の再計算、代用品の提案、食事制限・アレルギーの判定は行いません。グループ選択、省略可能な材料、参照、単位の選択肢、倍率指定、材料直後の下処理メモは対象外です。</p><p data-i18n="scopePrivate">ソースと選択はこのページ内だけで処理されます。自動保存や外部送信はありません。</p></details></div>
+<div class="review-column"><section class="panel choice-panel"><div class="panel-heading"><div><span class="number">02</span><h2 data-i18n="choiceTitle">分岐を選ぶ</h2></div><span class="pill" id="choice-count"></span></div><div class="variant-field"><label for="variant" data-i18n="variant">レシピの分岐</label><select id="variant" disabled></select></div><div id="choices"></div><p class="choice-hint" data-i18n="choiceHint">材料の選択肢は、出現箇所ごとに必ず選んでください。</p><button id="review" class="button primary wide" type="button" disabled><span data-i18n="review">選択したレシピを確認</span><span aria-hidden="true">↗</span></button></section>
+<div id="status" class="status" role="status" aria-live="polite"></div>
+<section class="panel result-panel" aria-labelledby="result-title"><div class="panel-heading"><div><span class="number">03</span><h2 id="result-title" data-i18n="resultTitle">書き出す内容</h2></div><span id="review-state" class="pill amber" data-i18n="notReviewed">未確認</span></div><div id="empty-state"><div class="empty-branch" aria-hidden="true">↳</div><h3 data-i18n="emptyTitle">選んだ分岐が、ここに。</h3><p data-i18n="emptyText">材料を選んで確認すると、残る手順・材料と取り除く分岐を表示します。</p></div><div id="result" hidden><div class="stats"><div><b id="stat-steps">0</b><span data-i18n="steps">手順</span></div><div><b id="stat-ingredients">0</b><span data-i18n="ingredients">材料の出現</span></div><div><b id="stat-removed">0</b><span data-i18n="removed">除外した分岐</span></div></div><div class="review-tabs" role="tablist" aria-label="Review views"><button id="tab-recipe" role="tab" aria-controls="view-recipe" aria-selected="true" data-tab="recipe" data-i18n="tabRecipe">残る手順</button><button id="tab-diff" role="tab" aria-controls="view-diff" aria-selected="false" data-tab="diff" data-i18n="tabDiff">材料と分岐</button><button id="tab-cook" role="tab" aria-controls="view-cook" aria-selected="false" data-tab="cook" data-i18n="tabCook">.cook</button></div><div id="view-recipe" role="tabpanel" aria-labelledby="tab-recipe" class="review-view"></div><div id="view-diff" role="tabpanel" aria-labelledby="tab-diff" class="review-view" hidden></div><div id="view-cook" role="tabpanel" aria-labelledby="tab-cook" class="review-view" hidden><pre id="output"></pre></div><div class="export-tools"><button id="download-cook" class="button primary" disabled data-i18n="downloadCook">selected.cook を保存</button><button id="download-receipt" class="button secondary" disabled data-i18n="downloadReceipt">選択記録 JSON</button><button id="print" class="text-button" disabled data-i18n="print">印刷</button></div><p class="export-note" data-i18n="exportNote">編集すると確認は解除されます。保存する前に手順と材料を読み直してください。</p></div></section>
+<details class="receipt-tools"><summary data-i18n="receiptTitle">保存した選択記録を読み込む</summary><p data-i18n="receiptHelp">同一ソースの choices.json（上限 8 MiB）だけを照合します。ソースが変わっている場合は拒否します。</p><button id="open-receipt" type="button" class="button secondary" data-i18n="openReceipt">choices.json を開く</button><input id="receipt-file" type="file" accept=".json,application/json" hidden><p id="receipt-status" role="status"></p></details></div></section>
+<section class="how-it-works"><p class="eyebrow">A SMALL, EXPLICIT HANDOFF</p><h2 data-i18n="howTitle">選んだものだけを、次のアプリへ。</h2><div class="how-grid"><article><span>①</span><h3 data-i18n="how1">作者の選択肢</h3><p data-i18n="how1Text">レシピに明示された分岐だけを使い、材料名やメモから推測しません。</p></article><article><span>②</span><h3 data-i18n="how2">そのままの分量</h3><p data-i18n="how2Text">選んだ材料の数量・単位と、残る手順の順序をそのまま保ちます。</p></article><article><span>③</span><h3 data-i18n="how3">通常の .cook</h3><p data-i18n="how3Text">選択用のマーカーを取り除き、内容を確認できる記録を添えます。</p></article></div></section></main><footer><span>CookBranch <small>v0.1 · authored variants</small></span><p data-i18n="footer">Cooklang 拡張の限定コンパイラー · 食品安全の判定ツールではありません</p></footer><script type="module">/**
+ * CookBranch: a deliberately bounded, lossless authored-variant materializer.
+ * Runtime dependencies: none. Quantities are opaque written strings, never math.
+ * Dialect: @tmlmt/cooklang-parser 3.0.0-alpha.47, supported subset only.
+ */
+const DIALECT = '@tmlmt/cooklang-parser@3.0.0-alpha.47 / CookBranch subset v1';
+const RECEIPT_SCHEMA = 'cookbranch.receipt/v1';
+const states = new WeakMap();
+
+class CookBranchError extends Error {
+  constructor(code, message, location = {}) {
+    super(message);
+    this.name = 'CookBranchError';
+    this.code = code;
+    this.line = location.line ?? null;
+    this.column = location.column ?? null;
+  }
+}
+
+function fail(code, message, location) { throw new CookBranchError(code, message, location); }
+let locatedSource = null, lineStarts = [];
+function locate(source, offset) {
+  if (source !== locatedSource) {
+    locatedSource = source; lineStarts = [0];
+    for (let i = 0; i < source.length; i++) if (source[i] === '\n') lineStarts.push(i + 1);
+  }
+  let low = 0, high = lineStarts.length;
+  while (low + 1 < high) { const middle = (low + high) >>> 1; if (lineStarts[middle] <= offset) low = middle; else high = middle; }
+  return { line: low + 1, column: offset - lineStarts[low] + 1 };
+}
+function frozen(value) {
+  if (value && typeof value === 'object' && !Object.isFrozen(value)) {
+    for (const child of Object.values(value)) frozen(child);
+    Object.freeze(value);
+  }
+  return value;
+}
+async function hashSource(source) {
+  if (typeof source !== 'string') fail('INVALID_SOURCE', 'Recipe source must be a string.');
+  if (!globalThis.crypto?.subtle) fail('CRYPTO_UNAVAILABLE', 'SHA-256 requires a secure browser context or modern Node.js.');
+  const hash = await globalThis.crypto.subtle.digest('SHA-256', new TextEncoder().encode(source));
+  return [...new Uint8Array(hash)].map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+function tagsAt(text, offset, source) {
+  if (!text.startsWith('[')) return { tags: null, length: 0 };
+  const end = text.indexOf(']');
+  const location = locate(source, offset);
+  if (end < 0) fail('MALFORMED_SCOPE', 'Unclosed variant marker.', location);
+  const contents = text.slice(1, end);
+  if (contents.includes('--') || contents.includes('[-') || contents.endsWith('-')) fail('UNSUPPORTED_COMMENT_BOUNDARY', 'Comment delimiters may not cross variant markers.', location);
+  if (contents.includes('?')) fail('UNSUPPORTED_OPTIONAL', 'Optional steps and sections are not supported.', location);
+  const tags = contents.split(',').map(t => t.trim());
+  if (tags.some(t => !t || (t !== '*' && !/^[\p{L}\p{N}][\p{L}\p{N} _.-]*$/u.test(t)))) {
+    fail('MALFORMED_SCOPE', 'Use exact comma-separated variant names, or * for default.', location);
+  }
+  if (new Set(tags).size !== tags.length) fail('MALFORMED_SCOPE', 'Duplicate variant names are not allowed in one marker.', location);
+  const tail = text.slice(end + 1);
+  if (tail.startsWith('[') || /^\s+\[/.test(tail)) fail('MALFORMED_SCOPE', 'Only one variant marker is allowed per step or section.', location);
+  if (tail && !/^\s/.test(tail)) fail('MALFORMED_SCOPE', 'A variant marker must be followed by whitespace.', location);
+  // Consume horizontal spacing only; a tag-only first line keeps its line break.
+  return { tags, length: end + 1 + (tail.match(/^[ \t]*/)?.[0].length || 0) };
+}
+
+function tokenAt(text, start, base, source, kind = 'ingredient', alternative = false) {
+  const prefixLength = alternative ? 0 : 1;
+  const begin = start + prefixLength;
+  const tail = text.slice(begin);
+  const location = locate(source, base + start);
+  if (!tail || /^[?&@+\-|]/.test(tail) || /^(?:\.\.?\/|\/)/.test(tail)) {
+    fail('UNSUPPORTED_MODIFIER', 'Ingredient/cookware modifiers, references, and grouped alternatives are not supported.', location);
+  }
+  if (/^\s/.test(tail)) fail('MALFORMED_TOKEN', 'Token names must start immediately after their marker.', location);
+  let name, content = '', end, braced = false;
+  const candidate = tail.match(kind === 'timer' ? /^([^{}\r\n@#~|\[\]]*)\{/ : /^([^{}\r\n@#~|\[\](,;:!?]*)\{/);
+  if (candidate) {
+    name = candidate[1].trim();
+    if (candidate[1] !== name) fail('MALFORMED_TOKEN', 'Whitespace before a quantity brace is outside the bounded dialect.', location);
+    const open = begin + candidate[0].length - 1;
+    const close = text.indexOf('}', open + 1);
+    if (close < 0 || /[{}\r\n]/.test(text.slice(open + 1, close))) fail('MALFORMED_TOKEN', 'Unclosed or nested quantity token.', location);
+    content = text.slice(open + 1, close);
+    end = close + 1;
+    braced = true;
+  } else {
+    if (alternative) fail('MALFORMED_ALTERNATIVE', 'Every alternative must have its own fully braced quantity token.', location);
+    const single = tail.match(/^[^\s@#~\[\]{}(,;:!?|]+/u);
+    if (single) single[0] = single[0].replace(/\.+$/, '');
+    if (!single || !single[0] || kind === 'timer') fail('MALFORMED_TOKEN', 'Malformed ingredient, cookware, or timer token.', location);
+    name = single[0];
+    end = begin + name.length;
+  }
+  if ((!name && kind !== 'timer') || /^[?&@+\-|]/.test(name) || /^(?:\.\.?\/|\/)/.test(name)) {
+    fail('MALFORMED_TOKEN', 'Missing or unsupported token name.', location);
+  }
+  if (name.includes('\\') || content.includes('\\')) fail('UNSUPPORTED_ESCAPE', 'Backslash escapes are outside the bounded dialect.', location);
+  if (content.includes('|')) fail('UNSUPPORTED_UNIT_ALTERNATIVE', 'Unit alternatives are not supported.', location);
+  if (content.includes('*') || content.includes('=')) fail('UNSUPPORTED_SCALING', 'Scaling and fixed/scalable modifiers are not supported.', location);
+  if ((content.match(/%/g) || []).length > 1) fail('MALFORMED_TOKEN', 'A quantity token may contain at most one unit separator.', location);
+  const separator = content.indexOf('%');
+  const quantity = separator < 0 ? content : content.slice(0, separator);
+  const unit = separator < 0 ? '' : content.slice(separator + 1);
+  if (separator >= 0 && (!quantity.trim() || !unit.trim())) fail('MALFORMED_TOKEN', 'Both quantity and unit are required around %. ', location);
+  if (kind === 'timer' && !quantity.trim()) fail('MALFORMED_TOKEN', 'Timers must include a written quantity.', location);
+  if (kind === 'cookware' && separator >= 0) fail('UNSUPPORTED_COOKWARE_UNIT', 'Cookware units are outside the supported subset.', location);
+  let note = '', noteRaw = '';
+  if (kind === 'ingredient' && text[end] === '[') {
+    const close = text.indexOf(']', end + 1);
+    if (close < 0 || /[\[\r\n]/.test(text.slice(end + 1, close))) fail('MALFORMED_NOTE', 'Unclosed or nested ingredient note.', locate(source, base + end));
+    note = text.slice(end + 1, close);
+    if (/[@#~{}\\]/.test(note)) fail('UNSUPPORTED_NOTE_CONTENT', 'Ingredient notes must be plain text without token markers, braces, or escapes.', locate(source, base + end));
+    noteRaw = text.slice(end, close + 1);
+    end = close + 1;
+  }
+  if (kind === 'ingredient' && text[end] === '(') fail('UNSUPPORTED_PREPARATION', 'Ingredient preparation annotations are outside the bounded dialect.', location);
+  const raw = text.slice(start, end);
+  if (raw.includes('--') || raw.includes('[-') || raw.includes('-]')) fail('UNSUPPORTED_COMMENT_BOUNDARY', 'Comment delimiters may not cross ingredient, cookware, timer, quantity, or note tokens.', location);
+  return { kind, name, quantity, unit, note, noteRaw, braced, raw, source: raw,
+    token: alternative ? '@' + raw : raw, ...location, start: base + start, end: base + end, localEnd: end };
+}
+
+function withoutComments(text, base, source) {
+  let result = '', i = 0;
+  while (i < text.length) {
+    if (text.startsWith('--', i)) { const end = text.indexOf('\n', i); i = end < 0 ? text.length : end; continue; }
+    if (text.startsWith('[-', i)) {
+      const end = text.indexOf('-]', i + 2);
+      if (end < 0) fail('MALFORMED_COMMENT', 'Unclosed block comment.', locate(source, base + i));
+      if (/[\r\n]/.test(text.slice(i, end))) fail('UNSUPPORTED_COMMENT_BOUNDARY', 'Multiline block comments are outside the bounded dialect.', locate(source, base + i));
+      i = end + 2; continue;
+    }
+    result += text[i++];
+  }
+  return result;
+}
+
+function scanStep(text, base, source, stepId, sectionId) {
+  const ingredients = [], alternatives = [], cookware = [], timers = [];
+  let i = 0;
+  while (i < text.length) {
+    if (text.startsWith('--', i)) { const e = text.indexOf('\n', i); i = e < 0 ? text.length : e + 1; continue; }
+    if (text.startsWith('[-', i)) {
+      const e = text.indexOf('-]', i + 2);
+      if (e < 0) fail('MALFORMED_COMMENT', 'Unclosed block comment.', locate(source, base + i));
+      i = e + 2; continue;
+    }
+    if (text[i] === '\\') { // Escapes can change what stock parsers inventory; do not guess.
+      fail('UNSUPPORTED_ESCAPE', 'Backslash escapes are outside the bounded dialect.', locate(source, base + i));
+    }
+    if (text.startsWith('{{', i)) fail('UNSUPPORTED_SCALING', 'Arbitrary scalable quantities are not supported.', locate(source, base + i));
+    if ('@#~'.includes(text[i])) {
+      const kind = text[i] === '@' ? 'ingredient' : text[i] === '#' ? 'cookware' : 'timer';
+      const first = tokenAt(text, i, base, source, kind);
+      let end = first.localEnd;
+      if (kind === 'ingredient') {
+        const occurrenceId = `ingredient:${base + i}`;
+        if (text[end] === '|') {
+          if (!first.braced) fail('MALFORMED_ALTERNATIVE', 'Every alternative must have its own fully braced quantity token.', first);
+          const id = `alt:${base + i}`;
+          const options = [first];
+          while (text[end] === '|') {
+            const next = tokenAt(text, end + 1, base, source, 'ingredient', true);
+            options.push(next); end = next.localEnd;
+          }
+          const publicOptions = options.map((option, index) => ({ ...option, id: `${id}:${index}`, index, occurrenceId, optionId: `${id}:${index}` }));
+          ingredients.push(...publicOptions);
+          alternatives.push({ id, occurrenceId, stepId, sectionId, start: base + i, end: base + end,
+            ...locate(source, base + i), raw: text.slice(i, end), source: text.slice(i, end), options: publicOptions });
+        } else ingredients.push({ ...first, id: occurrenceId, occurrenceId, optionId: null });
+      } else {
+        const token = { ...first, id: `${kind}:${base + i}`, occurrenceId: `${kind}:${base + i}`, optionId: null };
+        (kind === 'cookware' ? cookware : timers).push(token);
+      }
+      i = end; continue;
+    }
+    if (text[i] === '|') fail('UNSUPPORTED_PIPE', 'Only adjacent fully braced inline ingredient alternatives may use |.', locate(source, base + i));
+    if (text[i] === '{' || text[i] === '}') fail('MALFORMED_TOKEN', 'Unexpected quantity brace outside a token.', locate(source, base + i));
+    i++;
+  }
+  return { ingredients, alternatives, cookware, timers };
+}
+
+function parse(source) {
+  if (typeof source !== 'string') fail('INVALID_SOURCE', 'Recipe source must be a string.');
+  if (source.length > 1_000_000) fail('SOURCE_TOO_LARGE', 'Recipe source is limited to 1,000,000 characters.');
+  if (source.includes('\0') || /\r(?!\n)/.test(source)) fail('INVALID_SOURCE', 'NUL and standalone CR characters are not supported.');
+  // SHA-256 uses UTF-8: reject malformed UTF-16 so distinct inputs cannot alias as U+FFFD.
+  if (!source.isWellFormed()) fail('INVALID_SOURCE', 'Recipe source contains an unpaired Unicode surrogate.');
+  const lines = [], re = /[^\n]*(?:\n|$)/g;
+  let match;
+  while ((match = re.exec(source)) && match[0]) {
+    const raw = match[0], body = raw.replace(/\r?\n$/, '');
+    lines.push({ raw, body, start: match.index });
+  }
+  const nodes = [], sections = [], steps = [], alternatives = [], variants = ['*'];
+  const register = tags => { for (const tag of tags || []) if (!variants.includes(tag)) variants.push(tag); };
+  let section = { id: 'section:root', name: '', tags: null, line: 1, column: 1, source: '', implicit: true, stepIds: [] };
+  sections.push(section);
+  let index = 0;
+  function add(node, end) {
+    // Whitespace following a node belongs to that node, so removing a step also removes its blank separators.
+    while (end < lines.length && !lines[end].body.trim()) end++;
+    node.end = end < lines.length ? lines[end].start : source.length;
+    node.raw = source.slice(node.start, node.end);
+    nodes.push(node); index = end;
+  }
+  if (lines[0]?.body.replace(/^\uFEFF/, '') === '---') {
+    let end = 1;
+    while (end < lines.length && lines[end].body !== '---') end++;
+    if (end === lines.length) fail('MALFORMED_METADATA', 'Unclosed YAML front matter.', { line: 1, column: 1 });
+    add({ type: 'metadata', start: 0, sectionId: null }, end + 1);
+  }
+  const remainderStart = index < lines.length ? lines[index].start : source.length;
+  const laterFrontMatter = /---\r?\n[\s\S]*?\r?\n---/.exec(source.slice(remainderStart));
+  if (laterFrontMatter) fail('UNSUPPORTED_METADATA_BOUNDARY', 'YAML front matter is supported only at the start of the source.', locate(source, remainderStart + laterFrontMatter.index));
+  while (index < lines.length) {
+    const line = lines[index], body = line.body;
+    if (!body.trim()) { add({ type: 'whitespace', start: line.start, sectionId: section.id }, index + 1); continue; }
+    if (body.trim() === '---') fail('UNSUPPORTED_METADATA_BOUNDARY', 'YAML front matter must begin at the start of the source, optionally after one BOM.', locate(source, line.start));
+    let paragraphEnd = index + 1;
+    while (paragraphEnd < lines.length && lines[paragraphEnd].body.trim()) paragraphEnd++;
+    const paragraphLines = lines.slice(index, paragraphEnd);
+    if (paragraphLines.length > 1 && paragraphLines.some(l => /^\s*(?:=|>>)/.test(l.body)) && !paragraphLines.every(l => /^\s*>>/.test(l.body))) {
+      fail('UNSUPPORTED_PARAGRAPH_BOUNDARY', 'Separate section headers and metadata blocks from instructions with blank lines.', locate(source, line.start));
+    }
+    if (/^\s*>>/.test(body)) { add({ type: 'metadata', start: line.start, sectionId: null }, index + 1); continue; }
+    if (/^\s*=/.test(body)) {
+      const h = body.match(/^(\s*=+\s*)(.*?)(\s*=+\s*)?$/);
+      let middle = h[2], prefixLength = h[1].length;
+      const scope = tagsAt(middle, line.start + prefixLength, source);
+      if (scope.tags) middle = middle.slice(scope.length);
+      if (!middle.trim() && scope.tags) fail('MALFORMED_SECTION', 'A tagged section must have a name.', locate(source, line.start));
+      if (middle.includes('[') || middle.includes(']')) fail('MALFORMED_SCOPE', 'Section variant tags must appear once at the start of the name.', locate(source, line.start));
+      register(scope.tags);
+      section = { id: `section:${line.start}`, name: middle.trim(), tags: scope.tags, ...locate(source, line.start), source: body, implicit: false, stepIds: [] };
+      sections.push(section);
+      add({ type: 'section', start: line.start, sectionId: section.id, markerStart: line.start + prefixLength, markerLength: scope.length }, index + 1);
+      continue;
+    }
+    let end = index + 1;
+    while (end < lines.length && lines[end].body.trim() && !/^\s*(?:=|>>)/.test(lines[end].body)) end++;
+    const last = lines[end - 1];
+    const contentEnd = last.start + last.body.length;
+    const original = source.slice(line.start, contentEnd);
+    const leading = original.match(/^[^\S\r\n]*/)[0].length;
+    let scope = { tags: null, length: 0 };
+    if (original.slice(leading).startsWith('[') && !original.slice(leading).startsWith('[-')) scope = tagsAt(original.slice(leading), line.start + leading, source);
+    let markerLength = scope.length;
+    // A tag on its own line can prefix the following step without leaking a blank output line.
+    if (scope.tags && /^\r?\n/.test(original.slice(leading + markerLength))) markerLength += original.slice(leading + markerLength).startsWith('\r\n') ? 2 : 1;
+    const stripped = original.slice(0, leading) + original.slice(leading + markerLength);
+    if (scope.tags && !stripped.trim()) fail('MALFORMED_SCOPE', 'A variant marker must be attached to a step.', locate(source, line.start));
+    if (/\r?\n[^\S\r\n]*\[(?!-)/.test(stripped)) fail('MALFORMED_SCOPE', 'Start separately tagged steps after a blank line.', locate(source, line.start));
+    if (section.tags && scope.tags && !section.tags.some(t => scope.tags.includes(t))) {
+      fail('CONTRADICTORY_SCOPE', 'This step and its section have no variant in common.', locate(source, line.start));
+    }
+    register(scope.tags);
+    const uncommented = withoutComments(stripped, line.start, source);
+    if (/^\s*(?:--|\[-)/.test(stripped) && uncommented.trim()) {
+      fail('UNSUPPORTED_COMMENT_BOUNDARY', 'Keep leading comments in their own blank-separated paragraph.', locate(source, line.start));
+    }
+    if (scope.tags && /^\s*>>/.test(stripped)) fail('UNSUPPORTED_METADATA_SCOPE', 'Legacy metadata cannot carry a variant scope.', locate(source, line.start));
+    const isNote = /^\s*>/.test(stripped);
+    if (isNote && stripped.includes('{{')) fail('UNSUPPORTED_SCALING', 'Arbitrary scalable quantities in notes are not supported.', locate(source, line.start));
+    const isComment = !uncommented.trim();
+    const id = `step:${line.start}`;
+    const contentBase = line.start + leading + markerLength;
+    const tokens = isNote || isComment ? { ingredients: [], alternatives: [], cookware: [], timers: [] } : scanStep(original.slice(leading + markerLength), contentBase, source, id, section.id);
+    const step = { id, type: isNote ? 'note' : isComment ? 'comment' : 'step', sectionId: section.id, tags: scope.tags,
+      ...locate(source, line.start), source: original, body: stripped, ...tokens };
+    steps.push(step); section.stepIds.push(id); alternatives.push(...tokens.alternatives);
+    add({ type: 'step', id, start: line.start, contentEnd, sectionId: section.id, markerStart: line.start + leading, markerLength }, end);
+  }
+  if (!steps.some(step => step.type === 'step')) fail('EMPTY_RECIPE', 'Add at least one recipe instruction.');
+  return { nodes, sections, steps, alternatives, variants };
+}
+
+async function analyze(source) {
+  const parsed = parse(source);
+  const analysis = frozen({ sourceHash: await hashSource(source), dialect: DIALECT,
+    variants: parsed.variants, sections: parsed.sections, steps: parsed.steps, alternatives: parsed.alternatives });
+  states.set(analysis, { ...parsed, source });
+  return analysis;
+}
+const active = (tags, variant) => tags === null || tags.includes(variant);
+function select(analysis, variant) {
+  if (!states.has(analysis)) fail('INVALID_ANALYSIS', 'Use the object returned by analyze().');
+  if (typeof variant !== 'string' || !analysis.variants.includes(variant)) fail('UNKNOWN_VARIANT', 'Choose one exact variant listed in this recipe.');
+  const sections = analysis.sections.filter(s => active(s.tags, variant));
+  const ids = new Set(sections.map(s => s.id));
+  const steps = analysis.steps.filter(s => ids.has(s.sectionId) && active(s.tags, variant));
+  const stepIds = new Set(steps.map(s => s.id));
+  const alternatives = analysis.alternatives.filter(a => stepIds.has(a.stepId));
+  const removedBranches = [
+    ...analysis.sections.filter(s => !ids.has(s.id)).map(s => ({ type: 'section', id: s.id, line: s.line, source: s.source, reason: `Section does not include ${variant}.` })),
+    ...analysis.steps.filter(s => !stepIds.has(s.id)).map(s => ({ type: s.type, id: s.id, line: s.line, source: s.source,
+      reason: ids.has(s.sectionId) ? `Step does not include ${variant}.` : `Containing section does not include ${variant}.` }))
+  ].sort((a, b) => a.line - b.line);
+  return frozen({ variant, sections, steps, alternatives, removedBranches });
+}
+
+function plainObject(value) {
+  return value !== null && typeof value === 'object' && !Array.isArray(value) && [Object.prototype, null].includes(Object.getPrototypeOf(value));
+}
+// Capture every caller-owned field before the first asynchronous hash operation.
+// Reject accessors and non-plain values rather than invoking arbitrary serialization.
+function snapshotDecision(value, ancestors = new Set(), depth = 0) {
+  if (value === null || value === undefined || ['string', 'boolean'].includes(typeof value)) return value;
+  if (typeof value === 'number' && Number.isFinite(value)) return value;
+  if (depth > 32 || (!Array.isArray(value) && !plainObject(value)) || ancestors.has(value)) {
+    fail('INVALID_DECISION', 'Decisions must contain only acyclic plain data.');
+  }
+  const result = Array.isArray(value) ? [] : Object.create(null);
+  ancestors.add(value);
+  for (const key of Reflect.ownKeys(value)) {
+    if (Array.isArray(value) && key === 'length') continue;
+    const descriptor = Object.getOwnPropertyDescriptor(value, key);
+    if (typeof key !== 'string' || !Object.hasOwn(descriptor, 'value')) fail('INVALID_DECISION', 'Decision fields must be plain data properties.');
+    Object.defineProperty(result, key, { value: snapshotDecision(descriptor.value, ancestors, depth + 1), enumerable: true, writable: true, configurable: true });
+  }
+  ancestors.delete(value);
+  return frozen(result);
+}
+
+function replaceRanges(source, begin, end, edits) {
+  let out = '', cursor = begin;
+  for (const edit of edits.filter(e => e.start >= begin && e.start < end).sort((a, b) => a.start - b.start)) {
+    if (edit.start < cursor) fail('INTERNAL_OVERLAP', 'Overlapping edits are not allowed.');
+    out += source.slice(cursor, edit.start) + edit.text; cursor = edit.end;
+  }
+  return out + source.slice(cursor, end);
+}
+
+async function compile(source, decision) {
+  if (!plainObject(decision)) fail('INVALID_DECISION', 'Supply an explicit source hash, variant, and choice map.');
+  const allowed = new Set(['sourceHash', 'variant', 'choices', 'schema', 'dialect', 'outputHash', 'removedBranches', 'selectedOccurrences']);
+  if (Reflect.ownKeys(decision).some(k => !allowed.has(k))) fail('UNSUPPORTED_DECISION', 'Unknown decision fields; scaling and inferred choices are not supported.');
+  const choiceDescriptor = Object.getOwnPropertyDescriptor(decision, 'choices');
+  if (!choiceDescriptor || !Object.hasOwn(choiceDescriptor, 'value') || !plainObject(choiceDescriptor.value)) fail('INVALID_CHOICES', 'Supply an explicit plain choice map, even when it is empty.');
+  decision = snapshotDecision(decision);
+  if (decision.schema !== undefined && decision.schema !== RECEIPT_SCHEMA) fail('INVALID_RECEIPT', 'Unknown receipt schema.');
+  if (decision.dialect !== undefined && decision.dialect !== DIALECT) fail('INVALID_RECEIPT', 'Receipt dialect does not match this compiler.');
+  const analysis = await analyze(source);
+  if (decision.sourceHash !== analysis.sourceHash) fail('STALE_SOURCE', 'The source changed or its hash is missing. Analyze it again and make fresh choices.');
+  const selected = select(analysis, decision.variant);
+  if (!selected.steps.some(s => s.type === 'step')) fail('EMPTY_SELECTION', 'This variant has no active recipe instructions.');
+  if (!plainObject(decision.choices)) fail('INVALID_CHOICES', 'Supply an explicit choice map, even when it is empty.');
+  const needed = new Map(selected.alternatives.map(a => [a.id, a]));
+  for (const key of Reflect.ownKeys(decision.choices)) if (!needed.has(key)) fail('STALE_CHOICE', 'A choice belongs to another occurrence or an inactive branch.');
+  const choices = {}, picked = new Map();
+  for (const alternative of selected.alternatives) {
+    if (!Object.hasOwn(decision.choices, alternative.id)) fail('MISSING_CHOICE', 'Explicitly choose an option for every active alternative, including the first option.', alternative);
+    const option = alternative.options.find(o => o.id === decision.choices[alternative.id]);
+    if (!option) fail('INVALID_CHOICE', 'Choose an option belonging to this exact ingredient occurrence.', alternative);
+    choices[alternative.id] = option.id; picked.set(alternative.occurrenceId, option);
+  }
+  const state = states.get(analysis), stepIds = new Set(selected.steps.map(s => s.id)), sectionIds = new Set(selected.sections.map(s => s.id));
+  const edits = [];
+  for (const node of state.nodes) if (node.markerLength) edits.push({ start: node.markerStart, end: node.markerStart + node.markerLength, text: '' });
+  for (const alternative of selected.alternatives) edits.push({ start: alternative.start, end: alternative.end, text: picked.get(alternative.occurrenceId).token });
+  let text = '';
+  for (const node of state.nodes) {
+    if (node.sectionId && !sectionIds.has(node.sectionId)) continue;
+    if (node.type === 'step' && !stepIds.has(node.id)) continue;
+    text += replaceRanges(source, node.start, node.end, edits);
+  }
+  const outputHash = await hashSource(text);
+  if (decision.outputHash !== undefined && decision.outputHash !== outputHash) fail('INVALID_RECEIPT', 'The receipt output hash does not match these decisions.');
+  const beforeIngredients = analysis.steps.flatMap(s => s.ingredients);
+  const afterIngredients = selected.steps.flatMap(s => s.ingredients.filter(i => !i.optionId || picked.get(i.occurrenceId)?.id === i.id));
+  const kept = new Set(afterIngredients.map(i => i.id));
+  const stepTexts = new Map();
+  for (const node of state.nodes.filter(n => n.type === 'step' && stepIds.has(n.id))) stepTexts.set(node.id, replaceRanges(source, node.start, node.contentEnd, edits));
+  const toStep = (s, after = false) => ({ id: s.id, type: s.type, line: s.line, sectionId: s.sectionId, text: after ? stepTexts.get(s.id) : s.source });
+  const byStepId = new Map(analysis.steps.map(s => [s.id, s]));
+  const beforeSteps = analysis.steps.filter(s => s.type !== 'comment').map(s => toStep(s));
+  const afterSteps = selected.steps.filter(s => s.type !== 'comment').map(s => toStep(s, true));
+  const preview = {
+    before: { steps: beforeSteps, ingredients: beforeIngredients, cookware: analysis.steps.flatMap(s => s.cookware), timers: analysis.steps.flatMap(s => s.timers) },
+    after: { steps: afterSteps, ingredients: afterIngredients, cookware: selected.steps.flatMap(s => s.cookware), timers: selected.steps.flatMap(s => s.timers) },
+    removedBranches: selected.removedBranches,
+    ingredientDifferences: { removed: beforeIngredients.filter(i => !kept.has(i.id)), selected: [...picked.values()] },
+    instructionDifferences: {
+      removed: beforeSteps.filter(s => !stepIds.has(s.id)),
+      changed: afterSteps.filter(s => byStepId.get(s.id).source !== s.text).map(s => ({ id: s.id, line: s.line, before: byStepId.get(s.id).source, after: s.text }))
+    }
+  };
+  const selectedOccurrences = selected.alternatives.map(a => ({
+    id: a.id, occurrenceId: a.occurrenceId, line: a.line, column: a.column,
+    optionId: picked.get(a.occurrenceId).id, token: picked.get(a.occurrenceId).token
+  }));
+  for (const [key, value] of [['removedBranches', selected.removedBranches], ['selectedOccurrences', selectedOccurrences]]) {
+    if (decision[key] !== undefined && JSON.stringify(decision[key]) !== JSON.stringify(value)) fail('INVALID_RECEIPT', 'Receipt display records do not match the authoritative source and choices.');
+  }
+  return frozen({ text, receipt: { schema: RECEIPT_SCHEMA, dialect: DIALECT, sourceHash: analysis.sourceHash, variant: decision.variant, choices, outputHash, removedBranches: selected.removedBranches, selectedOccurrences }, preview });
+}
+
+const SAMPLE = `---
+title: Orchard Bowl
+servings: 2
+---
+
+== Base ==
+
+Mix @cooked barley{180%g}|cooked rice{200%g} with @peas{60%g} in a #bowl{}.
+
+[*] Fold in @lemon juice{15%ml}.
+
+[herb] Fold in @herb dressing{25%ml}.
+
+== [herb] Finish ==
+
+Add @parsley{3%g}, then wait for ~rest{2%minutes}.
+`;
+
+// A source can expand into a larger audit record. Export/import share one record limit.
+const MAX_SOURCE_BYTES=100000;
+const MAX_RECEIPT_BYTES=8*1024*1024;
+function checkTextBytes(text,kind='source'){
+  const limit=kind==='receipt'?MAX_RECEIPT_BYTES:MAX_SOURCE_BYTES;
+  if(new TextEncoder().encode(text).length>limit){const error=new Error(kind==='receipt'?'The choice record exceeds the 8 MiB supported limit.':'The source exceeds the 100 KB supported limit.');error.code=kind==='receipt'?'RECEIPT_LIMIT':'LIMIT';throw error;}
+  return text;
+}
+function serializeReceipt(receipt){return checkTextBytes(JSON.stringify(receipt,null,2)+'\n','receipt');}
+
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const EN={skip:'Skip to workbench',local:'Processed in your browser',title:'Choose a branch.\nKeep one recipe.',lede:'Choose the ingredients and instructions the author provided. Review one version, then export an ordinary Cooklang file.',sourceTitle:'Recipe source',sourceHelp:'Paste a recipe with authored variants, or open a .cook file.',open:'Open .cook',reset:'Reset sample',sourceLabel:'Cooklang source',sourceFoot:'UTF-8 · 100 KB limit',dialect:'Supports a bounded subset of @tmlmt extensions alpha.47. Ordinary ingredients, cookware, timers, and explicit branches only.',analyze:'Read source again',scopeTitle:'Supported scope & limits',scopeText:'Shared steps, default (*) and named branches, and alternatives with complete {quantity%unit} ingredient tokens. A step must match both its own branch and its section’s branch.',scopeNo:'No quantity arithmetic, substitution suggestions, or dietary/allergen assessment. Grouped alternatives, optional items, references, unit alternatives, scaling, and attached ingredient preparations are outside this profile.',scopePrivate:'Source and choices stay in this page. No automatic saving or external transmission.',choiceTitle:'Choose your branches',variant:'Recipe variant',choiceHint:'Choose every active ingredient alternative, once per occurrence.',review:'Review selected recipe',resultTitle:'Your selected recipe',notReviewed:'Not reviewed',emptyTitle:'Your chosen branch appears here.',emptyText:'Choose the ingredients and review the remaining instructions, ingredients, and removed branches.',steps:'steps',ingredients:'ingredient uses',removed:'removed branches',tabRecipe:'Instructions',tabDiff:'Ingredient & branch diff',tabCook:'.cook',downloadCook:'Save selected.cook',downloadReceipt:'Choices JSON',print:'Print',exportNote:'Any edit clears this review. Read the instructions and ingredients before saving.',receiptTitle:'Import a saved choice record',receiptHelp:'Only a choices.json for this exact source is accepted (up to 8 MiB). A source change makes the record stale.',openReceipt:'Open choices.json',howTitle:'Only your choices go to the next app.',how1:'Author-provided choices',how1Text:'Use only branches written into the recipe. No guessing from ingredient names or notes.',how2:'Written quantities intact',how2Text:'Keep the chosen ingredient’s quantity and unit, and the order of remaining instructions.',how3:'Ordinary .cook',how3Text:'Remove selection markers and keep a reviewable record of the decisions.',footer:'A bounded Cooklang extension compiler · Not a food-safety assessment',defaultVariant:'Default (*)',line:'Line',lines:'lines',choices:'choices',ready:'Choose each active ingredient alternative, then review.',noAlternatives:'No active inline alternatives. Review the chosen branch.',changed:'Source changed. Read the source again to make fresh choices.',choiceChanged:'Choices changed. Review again before exporting.',reviewed:'Ready to save',success:'The selected recipe is prepared. Check the retained instructions and removed branches.',imported:'Choice record matches this source. Review the output before saving.',selectedIngredients:'Retained ingredient occurrences',removedIngredients:'Removed ingredient occurrences',removedBranches:'Removed branches',none:'None',section:'Recipe',shortTitle:'Choice'};
+const JA={...Object.fromEntries($$('[data-i18n]').map(e=>[e.dataset.i18n,e.textContent])),defaultVariant:'標準 (*)',line:'行',lines:'行',choices:'選択箇所',ready:'有効な材料の選択肢をそれぞれ選び、内容を確認してください。',noAlternatives:'有効な材料の選択肢はありません。分岐の内容を確認してください。',changed:'ソースが変わりました。読み直して、材料を選び直してください。',choiceChanged:'選択が変わりました。もう一度確認してください。',reviewed:'保存できます',success:'選択したレシピを準備しました。残る手順と除外した分岐を確認してください。',imported:'ソースと選択記録が一致しました。書き出す前に内容を確認してください。',selectedIngredients:'残る材料の出現',removedIngredients:'取り除く材料の出現',removedBranches:'取り除く分岐',none:'なし',section:'レシピ',shortTitle:'材料の選択'};
+const JA_ERRORS={CONTRADICTORY_SCOPE:'セクションと手順に共通する分岐がありません。タグを修正してください。',CRYPTO_UNAVAILABLE:'この環境では SHA-256 を使えません。対応ブラウザの安全な接続またはローカルファイルから開いてください。',EMPTY_RECIPE:'少なくとも 1 つのレシピ手順が必要です。',EMPTY_SELECTION:'この分岐には有効なレシピ手順がありません。',INVALID_ANALYSIS:'ソースを読み直してください。',INVALID_CHOICE:'この材料の出現箇所に属する選択肢を選んでください。',INVALID_CHOICES:'選択記録の材料指定が正しくありません。',INVALID_DECISION:'選択記録の形式が正しくありません。',INVALID_RECEIPT:'選択記録がソースと一致しません。ソースから選び直してください。',INVALID_SOURCE:'ソースの文字コードや制御文字を確認してください。',MALFORMED_ALTERNATIVE:'すべての選択肢に完全な {数量%単位} を付けてください。',MALFORMED_COMMENT:'コメントが閉じられていません。',MALFORMED_METADATA:'メタデータの区切りを確認してください。',MALFORMED_NOTE:'材料メモの括弧を確認してください。',MALFORMED_SCOPE:'分岐タグの形式、空白、手順間の空行を確認してください。',MALFORMED_SECTION:'分岐つきセクションには名前が必要です。',MALFORMED_TOKEN:'材料・器具・タイマーの名前と括弧を確認してください。',MISSING_CHOICE:'有効な材料の選択肢をすべて選んでください。',SOURCE_TOO_LARGE:'ソースが大きすぎます。短いレシピに分けてください。',STALE_CHOICE:'別のソースまたは無効な分岐の選択が含まれています。',STALE_SOURCE:'ソースが変わっています。読み直して、材料を選び直してください。',UNKNOWN_VARIANT:'ソースに存在する分岐を選んでください。',UNSUPPORTED_COMMENT_BOUNDARY:'コメントと材料・分岐タグが混在しています。先頭のコメントは空行で分けてください。',UNSUPPORTED_COOKWARE_UNIT:'器具の単位指定は対象外です。',UNSUPPORTED_DECISION:'選択記録に未対応の項目があります。',UNSUPPORTED_ESCAPE:'バックスラッシュのエスケープは対象外です。',UNSUPPORTED_MODIFIER:'省略可能な材料・参照・グループ指定などは対象外です。',UNSUPPORTED_OPTIONAL:'省略可能な手順・セクションは対象外です。',UNSUPPORTED_PIPE:'| は完全な材料トークンに隣接する選択肢だけに使えます。',UNSUPPORTED_PREPARATION:'材料直後の (下処理メモ) は対象外です。通常の手順として書き直してください。',UNSUPPORTED_SCALING:'倍率や自動計算を含む数量は対象外です。',UNSUPPORTED_UNIT_ALTERNATIVE:'単位の選択肢は対象外です。',UNSUPPORTED_NOTE_CONTENT:'材料メモ内の @・#・~ などは書き出し先で別のトークンになるため対象外です。',UNSUPPORTED_PARAGRAPH_BOUNDARY:'セクション見出し・メタデータ・手順の間には空行を入れてください。',UNSUPPORTED_METADATA_SCOPE:'メタデータに分岐タグは付けられません。',UNSUPPORTED_METADATA_BOUNDARY:'YAML メタデータはソースの先頭に置いてください。',LIMIT:'ソースは 100 KB 以下にしてください。',RECEIPT_LIMIT:'選択記録は 8 MiB 以下にしてください。上限を超える記録は書き出しもできません。',UTF8:'有効な UTF-8 テキストを読み込んでください。',JSON:'選択記録が正しい JSON ではありません。',SCHEMA:'CookBranch v1 の選択記録を読み込んでください。',SOURCE:'ソースを読み直してから選択記録を読み込んでください。',FILE:'ファイルを読み込めませんでした。'};
+let lang='ja',analysis=null,selected=null,result=null,choices=Object.create(null),sourceBacking=null,cachedReceipt=null,epoch=0,statusKey='',statusError=null,receiptState='',activeTab='recipe';
+const t=key=>(lang==='ja'?JA:EN)[key]||key;
+function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e;}
+function status(key,error=null){statusKey=key;statusError=error;$('#status').classList.toggle('error',!!error);$('#status').textContent=error?`${error.code||'INPUT'}${error.line?` · ${t('line')} ${error.line}`:''}: ${lang==='ja'?(JA_ERRORS[error.code]||error.message):error.message}`:t(key);}
+function resetOutput(){result=null;cachedReceipt=null;$('#result').hidden=true;$('#empty-state').hidden=false;for(const id of ['download-cook','download-receipt','print'])$('#'+id).disabled=true;$('#review-state').textContent=t('notReviewed');$('#review-state').classList.add('amber');$('#receipt-status').textContent='';receiptState='';}
+function lineCount(){$('#source-lines').textContent=`${$('#source').value.split('\n').length} ${t('lines')}`;}
+function sourceText(){return checkTextBytes(sourceBacking??$('#source').value);}
+function clearSource(){sourceBacking=null;epoch++;analysis=null;selected=null;choices=Object.create(null);resetOutput();$('#variant').disabled=true;$('#review').disabled=true;$('#choices').replaceChildren();$('#choice-count').textContent='';status('changed');lineCount();}
+async function readSource(){const run=++epoch;resetOutput();analysis=null;selected=null;choices=Object.create(null);$('#variant').disabled=true;$('#review').disabled=true;$('#choices').replaceChildren();try{const a=await analyze(sourceText());if(run!==epoch)return;analysis=a;renderVariants('*');renderChoices();status(selected.alternatives.length?'ready':'noAlternatives');}catch(error){if(run!==epoch)return;$('#variant').replaceChildren();$('#choice-count').textContent='';status('',error);}lineCount();}
+function renderVariants(value){$('#variant').replaceChildren();for(const v of analysis.variants){const option=el('option',null,v==='*'?t('defaultVariant'):v);option.value=v;$('#variant').append(option);}$('#variant').value=analysis.variants.includes(value)?value:'*';$('#variant').disabled=false;selected=select(analysis,$('#variant').value);}
+function updateReviewButton(){$('#review').disabled=!analysis||!selected||selected.alternatives.some(a=>!choices[a.id]);}
+function renderChoices(){if(!selected)return;$('#choices').replaceChildren();$('#choice-count').textContent=`${selected.alternatives.length} ${t('choices')}`;for(const [index,alt] of selected.alternatives.entries()){const field=el('fieldset','alt-field');const legend=el('legend',null,`${t('shortTitle')} ${index+1}`);legend.append(el('small',null,`${t('line')} ${alt.line}`));field.append(legend);const options=el('div','alt-options');for(const option of alt.options){const label=el('label','alt-option'),input=el('input');input.type='radio';input.name=alt.id;input.value=option.id;input.dataset.alternative=alt.id;input.checked=choices[alt.id]===option.id;input.addEventListener('change',()=>{epoch++;choices[alt.id]=option.id;resetOutput();status('choiceChanged');updateReviewButton();});const text=el('span','option-label');text.append(el('b',null,option.name),el('small',null,`${option.quantity}${option.unit?' '+option.unit:''}${option.note?' · '+option.note:''}`));label.append(input,text);options.append(label);}field.append(options);$('#choices').append(field);}updateReviewButton();}
+function showTab(name){activeTab=name;for(const button of $$('.review-tabs button')){button.setAttribute('aria-selected',String(button.dataset.tab===name));button.tabIndex=button.dataset.tab===name?0:-1;}for(const view of ['recipe','diff','cook'])$('#view-'+view).hidden=view!==name;}
+function renderResult(){if(!result)return;$('#empty-state').hidden=true;$('#result').hidden=false;$('#review-state').textContent=t('reviewed');$('#review-state').classList.remove('amber');const p=result.preview;$('#stat-steps').textContent=p.after.steps.filter(s=>s.type==='step').length;$('#stat-ingredients').textContent=p.after.ingredients.length;$('#stat-removed').textContent=p.removedBranches.length;$('#output').textContent=result.text;const rv=$('#view-recipe');rv.replaceChildren();let previous=null,index=0;for(const step of p.after.steps){if(step.sectionId!==previous){previous=step.sectionId;const section=analysis.sections.find(x=>x.id===previous);rv.append(el('h3','recipe-section',section?.name||t('section')));}if(step.type==='note'){rv.append(el('p','recipe-note',step.text));}else{const row=el('div','recipe-step');row.append(el('span','step-num',String(++index)),el('p',null,step.text));rv.append(row);}}const diff=$('#view-diff');diff.replaceChildren();for(const [heading,items,removed] of [[t('selectedIngredients'),p.after.ingredients,false],[t('removedIngredients'),p.ingredientDifferences.removed,true]]){diff.append(el('h3','diff-heading',heading));if(!items.length)diff.append(el('p','diff-item',t('none')));for(const item of items){const row=el('div','diff-item'+(removed?' removed':''));row.append(el('span','sign',removed?'−':'+'),el('span',null,item.token||item.raw));diff.append(row);}}const branches=el('div','removed-branches');branches.append(el('h3','diff-heading',t('removedBranches')));if(!p.removedBranches.length)branches.append(el('p','diff-item',t('none')));for(const b of p.removedBranches){const row=el('div','branch-row',b.source);row.append(el('small',null,`${t('line')} ${b.line} · ${b.reason}`));branches.append(row);}diff.append(branches);for(const id of ['download-cook','download-receipt','print'])$('#'+id).disabled=false;showTab(activeTab);}
+async function review(){const run=++epoch;resetOutput();try{if(!analysis)throw {code:'SOURCE',message:'Read the source again before reviewing.'};const request={sourceHash:analysis.sourceHash,variant:$('#variant').value,choices:{...choices}};const r=await compile(sourceText(),request);if(run!==epoch)return;cachedReceipt=serializeReceipt(r.receipt);result=r;renderResult();status('success');}catch(error){if(run===epoch)status('',error);}}
+function download(text,name,type){if(!result)return;const url=URL.createObjectURL(new Blob([text],{type}));const link=el('a');link.href=url;link.download=name;document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);}
+async function readFile(file,kind='source'){if(!file)throw {code:'FILE',message:'No file was selected.'};if(file.size>(kind==='receipt'?MAX_RECEIPT_BYTES:MAX_SOURCE_BYTES))throw {code:kind==='receipt'?'RECEIPT_LIMIT':'LIMIT',message:kind==='receipt'?'The choice record exceeds the 8 MiB supported limit.':'The source exceeds the 100 KB supported limit.'};try{return new TextDecoder('utf-8',{fatal:true,ignoreBOM:true}).decode(await file.arrayBuffer());}catch{throw {code:'UTF8',message:'The file must be valid UTF-8 text.'};}}
+function localize(){document.documentElement.lang=lang;$$('[data-i18n]').forEach(e=>e.textContent=t(e.dataset.i18n));$('#language').textContent=lang==='ja'?'EN':'日本語';$('#language').setAttribute('aria-label',lang==='ja'?'Switch to English':'日本語に切り替え');lineCount();if(analysis){renderVariants($('#variant').value);renderChoices();}if(result)renderResult();status(statusKey,statusError);if(receiptState)$('#receipt-status').textContent=t(receiptState);}
+$('#source').value=SAMPLE;$('#source').addEventListener('input',clearSource);$('#analyze').addEventListener('click',readSource);$('#variant').addEventListener('change',()=>{epoch++;choices=Object.create(null);selected=select(analysis,$('#variant').value);resetOutput();renderChoices();status('choiceChanged');});$('#review').addEventListener('click',review);$('#reset').addEventListener('click',()=>{sourceBacking=null;$('#source').value=SAMPLE;$('#filename').textContent='orchard-bowl.cook';$('#file').value='';$('#receipt-file').value='';activeTab='recipe';readSource();});$('#language').addEventListener('click',()=>{lang=lang==='ja'?'en':'ja';localize();});$('#open-file').addEventListener('click',()=>$('#file').click());
+$('#file').addEventListener('change',async()=>{const run=++epoch;resetOutput();analysis=null;selected=null;choices=Object.create(null);$('#variant').disabled=true;$('#review').disabled=true;$('#choices').replaceChildren();try{const file=$('#file').files[0],content=await readFile(file);if(run!==epoch)return;sourceBacking=content;$('#source').value=content;$('#filename').textContent=file.name;await readSource();}catch(error){if(run===epoch)status('',error);}finally{$('#file').value='';}});
+$('#open-receipt').addEventListener('click',()=>$('#receipt-file').click());$('#receipt-file').addEventListener('change',async()=>{const run=++epoch;resetOutput();try{const text=await readFile($('#receipt-file').files[0],'receipt');if(run!==epoch)return;let receipt;try{receipt=JSON.parse(text);}catch{throw {code:'JSON',message:'The choice record is not valid JSON.'};}if(receipt?.schema!=='cookbranch.receipt/v1')throw {code:'SCHEMA',message:'This is not a CookBranch v1 choice record.'};if(!analysis)throw {code:'STALE_SOURCE',message:'Read the changed source again before importing a record.'};const r=await compile(sourceText(),receipt);if(run!==epoch)return;cachedReceipt=serializeReceipt(r.receipt);choices=Object.assign(Object.create(null),receipt.choices);renderVariants(receipt.variant);renderChoices();result=r;renderResult();status('success');receiptState='imported';$('#receipt-status').textContent=t('imported');}catch(error){if(run===epoch){status('',error);$('#receipt-status').textContent=$('#status').textContent;}}finally{$('#receipt-file').value='';}});
+$('#download-cook').addEventListener('click',()=>download(result.text,'selected.cook','text/plain;charset=utf-8'));$('#download-receipt').addEventListener('click',()=>download(cachedReceipt,'choices.json','application/json'));$('#print').addEventListener('click',()=>window.print());$$('.review-tabs button').forEach((button,index,all)=>{button.addEventListener('click',()=>showTab(button.dataset.tab));button.addEventListener('keydown',event=>{let next;if(event.key==='ArrowRight')next=(index+1)%all.length;if(event.key==='ArrowLeft')next=(index+all.length-1)%all.length;if(event.key==='Home')next=0;if(event.key==='End')next=all.length-1;if(next!==undefined){event.preventDefault();showTab(all[next].dataset.tab);all[next].focus();}});});localize();readSource();
+</script></body></html>
